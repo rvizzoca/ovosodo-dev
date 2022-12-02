@@ -1,0 +1,11 @@
+# .cache
+.cache
+
+# Public folder
+public/*
+
+# type definition files
+**/*.d.ts
+
+# Code-generated graphql.ts
+graphql-types.ts

@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "ESNext",
+    "lib": ["dom"],
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "outDir": "./build",
+
+    "strict": true,
+    "esModuleInterop": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "paths": {
+      "app/*": ["src/*"],
+      "graphql-types": ["graphql-types.ts"]
+    },
+    "typeRoots": ["./node_modules/@types", "./types"]
+  },
+  "exclude": ["node_modules", "public"]
+}
