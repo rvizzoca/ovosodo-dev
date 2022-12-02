@@ -8,13 +8,14 @@ export type Theme = typeof theme
 export const theme = {
   colors: {
     variants: {
-      neutralLight5: '#FFFFFF',
-      neutralDark1: '#000000',
+      neutralLight1: '#FFFFFF',
+      neutralLight2: '#F7F8F9',
+      neutralDark1: '#251841',
+      neutralDark2: '#888293',
     },
   },
   fontFamily: {
-    heading: "'Prata', serif",
-    paragraph: "'Inter', sans-serif",
+    default: "'Poppins', sans-serif",
   },
 }
 
