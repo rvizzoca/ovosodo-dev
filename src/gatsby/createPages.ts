@@ -1,16 +1,64 @@
+import { PageContext as HomePageContext } from 'app/templates/HomePage'
 import { CreatePagesArgs } from 'gatsby'
+import { CreatePagesQuery } from 'graphql-types'
 import path from 'path'
 
-const HOME_PAGE_TEMPLATE = path.resolve('src/templates/HomePage/index.tsx')
+import { collectGQLQueries } from '../gatsby/collectGraphQLFragments'
+import { getHomePageProps } from '../templates/HomePage/contents'
+import { getHomePages } from './utils/pages'
 
 export const createPages = async ({
   actions,
+  graphql,
   reporter,
 }: CreatePagesArgs): Promise<void> => {
-  actions.createPage({
-    path: '/',
-    component: HOME_PAGE_TEMPLATE,
-  })
+  const fragments = await collectGQLQueries(
+    path.resolve(__dirname, 'fragments'),
+  )
 
-  reporter.info(`Created Home`)
+  const { data, errors } = await graphql<CreatePagesQuery>(`
+    ${fragments}
+
+    query CreatePages {
+      site {
+        siteMetadata {
+          title
+          siteUrl
+        }
+      }
+      cms {
+        languages {
+          code
+          prefix
+        }
+        ...HomeQuery
+        ...RoomQuery
+      }
+    }
+  `)
+
+  if (!data) {
+    reporter.error(`CreatePages query errored`)
+    reporter.info(JSON.stringify(errors, null, 2))
+    return
+  }
+
+  const homePages = getHomePages(data)
+
+  homePages.forEach((page) => {
+    if (page.context) {
+      const props = getHomePageProps(data, page.context)
+
+      actions.createPage<HomePageContext>({
+        ...page,
+        context: {
+          ...page.context,
+          ...props,
+        },
+      })
+      reporter.info(
+        `Created page ${page.path} (Home ${JSON.stringify(page.context)})`,
+      )
+    }
+  })
 }

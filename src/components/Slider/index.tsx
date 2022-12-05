@@ -2,13 +2,14 @@ import 'keen-slider/keen-slider.min.css'
 
 import styled from '@emotion/styled'
 import { Button, Props as ButtonProps } from 'app/components/Common/Button'
+import { Props as ImageProps } from 'app/components/Common/Image'
 import { useKeenSlider } from 'keen-slider/react'
 import React, { memo } from 'react'
 
 export interface Props {
   cta?: ButtonProps
   description?: string
-  images?: string[]
+  images?: ImageProps[]
   label?: string
   pax?: string
   size?: string

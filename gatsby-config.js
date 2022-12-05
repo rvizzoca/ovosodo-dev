@@ -53,6 +53,29 @@ module.exports = {
       },
       __key: 'images',
     },
+    {
+      resolve: 'gatsby-plugin-graphql-codegen',
+      options: {
+        documentPaths: [`./src/**/*.{ts,tsx}`],
+        failOnError: false,
+        fileName: './graphql-types.ts',
+      },
+    },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        batch: true,
+        typeName: 'CMSData',
+        fieldName: 'cms',
+        url: `${process.env.DIRECTUS_URL}/graphql`,
+        headers: {
+          Authorization: `Bearer ${process.env.DIRECTUS_TOKEN}`,
+        },
+        dataLoaderOptions: {
+          maxBatchSize: 10,
+        },
+      },
+    },
     'gatsby-plugin-sitemap',
   ],
 }
