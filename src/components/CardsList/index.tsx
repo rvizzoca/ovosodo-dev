@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { FlexBox } from 'app/components/Layout/FlexBox'
 import React, { memo } from 'react'
 
 import { Card, Props as CardProps } from './Card'
@@ -23,7 +24,7 @@ export const CardsList = memo(function CardsList({
     return null
   }
   return (
-    <Container>
+    <Container row dial={5} tag="section">
       <Wrapper>
         <Heading>
           {icon ? (
@@ -42,10 +43,7 @@ export const CardsList = memo(function CardsList({
   )
 })
 
-const Container = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const Container = styled(FlexBox)`
   padding: 6rem 0;
   background-color: ${({ theme }) => theme.colors.variants.neutralLight2};
 `
