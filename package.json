@@ -23,6 +23,7 @@
     "@types/react-lazy-load-image-component": "^1.5.2",
     "emotion-rgba": "0.0.11",
     "fp-ts": "^2.13.1",
+    "framer-motion": "^7.6.19",
     "gatsby": "^4.24.4",
     "gatsby-plugin-emotion": "^7.24.0",
     "gatsby-plugin-env-variables": "^2.2.0",
