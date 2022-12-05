@@ -1,5 +1,4 @@
 import { Props as CardsListProps } from 'app/components/CardsList'
-import { Props as SliderProps } from 'app/components/Slider'
 import { CreatePagesQuery } from 'graphql-types'
 import { compact } from 'lodash'
 
@@ -7,7 +6,6 @@ import { PageContext } from '.'
 
 export interface Props {
   cardsListProps: CardsListProps | undefined
-  sliderProps: SliderProps | undefined
 }
 
 export const getHomePageProps = (
@@ -16,7 +14,6 @@ export const getHomePageProps = (
 ): Props => {
   return {
     cardsListProps: getCardsListProps(query, pageContext),
-    sliderProps: getSliderProps(query, pageContext),
   }
 }
 
@@ -58,40 +55,4 @@ const getCardsListProps = (
     label: 'Test',
     title: 'Questo il titolo',
   }
-}
-
-const getSliderProps = (
-  query: CreatePagesQuery,
-  pageContext: PageContext,
-): SliderProps | undefined => {
-  const roomNode = query.cms?.room
-
-  if (!roomNode) {
-    return undefined
-  }
-
-  const images = roomNode.map(({ images }) => {
-    compact(
-      compact(images).map(({ directus_files_id }) => {
-        const image = directus_files_id?.file?.childImageSharp
-
-        return image
-          ? {
-              alt: directus_files_id?.title || undefined,
-              sources: image.gatsbyImageData.images.sources[0].srcSet,
-              src: image?.gatsbyImageData.images.fallback.src,
-              srcSet: image?.gatsbyImageData.images.fallback.srcSet,
-              width: image?.original?.width || 0,
-              height: image?.original?.height || 0,
-            }
-          : undefined
-      }),
-    )
-
-    return {
-      images,
-    }
-  })
-
-  return undefined
 }

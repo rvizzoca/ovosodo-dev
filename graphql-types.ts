@@ -68,6 +68,7 @@ export type File = Node & {
   birthtimeMs?: Maybe<Scalars['Float']>;
   blksize?: Maybe<Scalars['Int']>;
   blocks?: Maybe<Scalars['Int']>;
+  url?: Maybe<Scalars['String']>;
   /** Copy file to static directory and return public url to it */
   publicURL?: Maybe<Scalars['String']>;
   /** Returns all children nodes filtered by type ImageSharp */
@@ -1403,155 +1404,6 @@ export type CmsData_Home_Files_Aggregated_Fields = {
   sort?: Maybe<Scalars['Float']>;
 };
 
-export type CmsData_Room = {
-  id: Scalars['ID'];
-  sort?: Maybe<Scalars['Int']>;
-  user_created?: Maybe<CmsData_Directus_Users>;
-  date_created?: Maybe<Scalars['CMSData_Date']>;
-  date_created_func?: Maybe<CmsData_Datetime_Functions>;
-  user_updated?: Maybe<CmsData_Directus_Users>;
-  date_updated?: Maybe<Scalars['CMSData_Date']>;
-  date_updated_func?: Maybe<CmsData_Datetime_Functions>;
-  identifier: Scalars['String'];
-  images?: Maybe<Array<Maybe<CmsData_Room_Files>>>;
-  images_func?: Maybe<CmsData_Count_Functions>;
-};
-
-
-export type CmsData_RoomUser_CreatedArgs = {
-  filter?: InputMaybe<CmsData_Directus_Users_Filter>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-};
-
-
-export type CmsData_RoomUser_UpdatedArgs = {
-  filter?: InputMaybe<CmsData_Directus_Users_Filter>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-};
-
-
-export type CmsData_RoomImagesArgs = {
-  filter?: InputMaybe<CmsData_Room_Files_Filter>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-};
-
-export type CmsData_Room_Files = {
-  id: Scalars['ID'];
-  room_id?: Maybe<CmsData_Room>;
-  directus_files_id?: Maybe<CmsData_Directus_Files>;
-  sort?: Maybe<Scalars['Int']>;
-};
-
-
-export type CmsData_Room_FilesRoom_IdArgs = {
-  filter?: InputMaybe<CmsData_Room_Filter>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-};
-
-
-export type CmsData_Room_FilesDirectus_Files_IdArgs = {
-  filter?: InputMaybe<CmsData_Directus_Files_Filter>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-};
-
-export type CmsData_Room_Filter = {
-  id?: InputMaybe<CmsData_String_Filter_Operators>;
-  sort?: InputMaybe<CmsData_Number_Filter_Operators>;
-  user_created?: InputMaybe<CmsData_Directus_Users_Filter>;
-  date_created?: InputMaybe<CmsData_Date_Filter_Operators>;
-  date_created_func?: InputMaybe<CmsData_Datetime_Function_Filter_Operators>;
-  user_updated?: InputMaybe<CmsData_Directus_Users_Filter>;
-  date_updated?: InputMaybe<CmsData_Date_Filter_Operators>;
-  date_updated_func?: InputMaybe<CmsData_Datetime_Function_Filter_Operators>;
-  identifier?: InputMaybe<CmsData_String_Filter_Operators>;
-  images?: InputMaybe<CmsData_Room_Files_Filter>;
-  images_func?: InputMaybe<CmsData_Count_Function_Filter_Operators>;
-  _and?: InputMaybe<Array<InputMaybe<CmsData_Room_Filter>>>;
-  _or?: InputMaybe<Array<InputMaybe<CmsData_Room_Filter>>>;
-};
-
-export type CmsData_Room_Files_Filter = {
-  id?: InputMaybe<CmsData_Number_Filter_Operators>;
-  room_id?: InputMaybe<CmsData_Room_Filter>;
-  directus_files_id?: InputMaybe<CmsData_Directus_Files_Filter>;
-  sort?: InputMaybe<CmsData_Number_Filter_Operators>;
-  _and?: InputMaybe<Array<InputMaybe<CmsData_Room_Files_Filter>>>;
-  _or?: InputMaybe<Array<InputMaybe<CmsData_Room_Files_Filter>>>;
-};
-
-export type CmsData_Room_Aggregated = {
-  group?: Maybe<Scalars['CMSData_JSON']>;
-  countAll?: Maybe<Scalars['Int']>;
-  count?: Maybe<CmsData_Room_Aggregated_Count>;
-  countDistinct?: Maybe<CmsData_Room_Aggregated_Count>;
-  avg?: Maybe<CmsData_Room_Aggregated_Fields>;
-  sum?: Maybe<CmsData_Room_Aggregated_Fields>;
-  avgDistinct?: Maybe<CmsData_Room_Aggregated_Fields>;
-  sumDistinct?: Maybe<CmsData_Room_Aggregated_Fields>;
-  min?: Maybe<CmsData_Room_Aggregated_Fields>;
-  max?: Maybe<CmsData_Room_Aggregated_Fields>;
-};
-
-export type CmsData_Room_Aggregated_Count = {
-  id?: Maybe<Scalars['Int']>;
-  sort?: Maybe<Scalars['Int']>;
-  user_created?: Maybe<Scalars['Int']>;
-  date_created?: Maybe<Scalars['Int']>;
-  user_updated?: Maybe<Scalars['Int']>;
-  date_updated?: Maybe<Scalars['Int']>;
-  identifier?: Maybe<Scalars['Int']>;
-  images?: Maybe<Scalars['Int']>;
-};
-
-export type CmsData_Room_Aggregated_Fields = {
-  sort?: Maybe<Scalars['Float']>;
-};
-
-export type CmsData_Room_Files_Aggregated = {
-  group?: Maybe<Scalars['CMSData_JSON']>;
-  countAll?: Maybe<Scalars['Int']>;
-  count?: Maybe<CmsData_Room_Files_Aggregated_Count>;
-  countDistinct?: Maybe<CmsData_Room_Files_Aggregated_Count>;
-  avg?: Maybe<CmsData_Room_Files_Aggregated_Fields>;
-  sum?: Maybe<CmsData_Room_Files_Aggregated_Fields>;
-  avgDistinct?: Maybe<CmsData_Room_Files_Aggregated_Fields>;
-  sumDistinct?: Maybe<CmsData_Room_Files_Aggregated_Fields>;
-  min?: Maybe<CmsData_Room_Files_Aggregated_Fields>;
-  max?: Maybe<CmsData_Room_Files_Aggregated_Fields>;
-};
-
-export type CmsData_Room_Files_Aggregated_Count = {
-  id?: Maybe<Scalars['Int']>;
-  room_id?: Maybe<Scalars['Int']>;
-  directus_files_id?: Maybe<Scalars['Int']>;
-  sort?: Maybe<Scalars['Int']>;
-};
-
-export type CmsData_Room_Files_Aggregated_Fields = {
-  id?: Maybe<Scalars['Float']>;
-  sort?: Maybe<Scalars['Float']>;
-};
-
 export type CmsData_Create_Languages_Input = {
   code: Scalars['ID'];
   name?: InputMaybe<Scalars['String']>;
@@ -1674,24 +1526,6 @@ export type CmsData_Create_Card_Translations_Input = {
 export type CmsData_Create_Home_Files_Input = {
   id?: InputMaybe<Scalars['ID']>;
   home_id?: InputMaybe<CmsData_Create_Home_Input>;
-  directus_files_id?: InputMaybe<CmsData_Create_Directus_Files_Input>;
-  sort?: InputMaybe<Scalars['Int']>;
-};
-
-export type CmsData_Create_Room_Input = {
-  id?: InputMaybe<Scalars['ID']>;
-  sort?: InputMaybe<Scalars['Int']>;
-  user_created?: InputMaybe<CmsData_Create_Directus_Users_Input>;
-  date_created?: InputMaybe<Scalars['CMSData_Date']>;
-  user_updated?: InputMaybe<CmsData_Create_Directus_Users_Input>;
-  date_updated?: InputMaybe<Scalars['CMSData_Date']>;
-  identifier: Scalars['String'];
-  images?: InputMaybe<Array<InputMaybe<CmsData_Create_Room_Files_Input>>>;
-};
-
-export type CmsData_Create_Room_Files_Input = {
-  id?: InputMaybe<Scalars['ID']>;
-  room_id?: InputMaybe<CmsData_Create_Room_Input>;
   directus_files_id?: InputMaybe<CmsData_Create_Directus_Files_Input>;
   sort?: InputMaybe<Scalars['Int']>;
 };
@@ -1822,24 +1656,6 @@ export type CmsData_Update_Home_Files_Input = {
   sort?: InputMaybe<Scalars['Int']>;
 };
 
-export type CmsData_Update_Room_Input = {
-  id?: InputMaybe<Scalars['ID']>;
-  sort?: InputMaybe<Scalars['Int']>;
-  user_created?: InputMaybe<CmsData_Update_Directus_Users_Input>;
-  date_created?: InputMaybe<Scalars['CMSData_Date']>;
-  user_updated?: InputMaybe<CmsData_Update_Directus_Users_Input>;
-  date_updated?: InputMaybe<Scalars['CMSData_Date']>;
-  identifier?: InputMaybe<Scalars['String']>;
-  images?: InputMaybe<Array<InputMaybe<CmsData_Update_Room_Files_Input>>>;
-};
-
-export type CmsData_Update_Room_Files_Input = {
-  id?: InputMaybe<Scalars['ID']>;
-  room_id?: InputMaybe<CmsData_Update_Room_Input>;
-  directus_files_id?: InputMaybe<CmsData_Update_Directus_Files_Input>;
-  sort?: InputMaybe<Scalars['Int']>;
-};
-
 export type CmsData_Delete_Many = {
   ids: Array<Maybe<Scalars['ID']>>;
 };
@@ -1868,12 +1684,6 @@ export type CmsData = {
   home_files: Array<CmsData_Home_Files>;
   home_files_by_id?: Maybe<CmsData_Home_Files>;
   home_files_aggregated: Array<CmsData_Home_Files_Aggregated>;
-  room: Array<CmsData_Room>;
-  room_by_id?: Maybe<CmsData_Room>;
-  room_aggregated: Array<CmsData_Room_Aggregated>;
-  room_files: Array<CmsData_Room_Files>;
-  room_files_by_id?: Maybe<CmsData_Room_Files>;
-  room_files_aggregated: Array<CmsData_Room_Files_Aggregated>;
 };
 
 
@@ -2020,54 +1830,6 @@ export type CmsDataHome_Files_AggregatedArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-
-export type CmsDataRoomArgs = {
-  filter?: InputMaybe<CmsData_Room_Filter>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-};
-
-
-export type CmsDataRoom_By_IdArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type CmsDataRoom_AggregatedArgs = {
-  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  filter?: InputMaybe<CmsData_Room_Filter>;
-  limit?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type CmsDataRoom_FilesArgs = {
-  filter?: InputMaybe<CmsData_Room_Files_Filter>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-};
-
-
-export type CmsDataRoom_Files_By_IdArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type CmsDataRoom_Files_AggregatedArgs = {
-  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  filter?: InputMaybe<CmsData_Room_Files_Filter>;
-  limit?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
 export type Query = {
   file?: Maybe<File>;
   allFile: FileConnection;
@@ -2125,6 +1887,7 @@ export type QueryFileArgs = {
   birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
   blksize?: InputMaybe<IntQueryOperatorInput>;
   blocks?: InputMaybe<IntQueryOperatorInput>;
+  url?: InputMaybe<StringQueryOperatorInput>;
   publicURL?: InputMaybe<StringQueryOperatorInput>;
   childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
   childImageSharp?: InputMaybe<ImageSharpFilterInput>;
@@ -2568,6 +2331,7 @@ export type FileFieldsEnum =
   | 'birthtimeMs'
   | 'blksize'
   | 'blocks'
+  | 'url'
   | 'publicURL'
   | 'childrenImageSharp'
   | 'childrenImageSharp___fixed___base64'
@@ -2885,6 +2649,7 @@ export type FileFilterInput = {
   birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
   blksize?: InputMaybe<IntQueryOperatorInput>;
   blocks?: InputMaybe<IntQueryOperatorInput>;
+  url?: InputMaybe<StringQueryOperatorInput>;
   publicURL?: InputMaybe<StringQueryOperatorInput>;
   childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
   childImageSharp?: InputMaybe<ImageSharpFilterInput>;
@@ -4673,8 +4438,6 @@ export type GraphQlSourceSortInput = {
 export type CreatePagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CreatePagesQuery = { site?: { siteMetadata?: { title?: string | null, siteUrl?: string | null } | null } | null, cms: { languages: Array<{ code: string, prefix?: string | null }>, home?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null, room: Array<{ id: string, images?: Array<{ directus_files_id?: { id: string, title?: string | null, file?: { childImageSharp?: { gatsbyImageData: any, original?: { width?: number | null, height?: number | null } | null } | null } | null } | null } | null> | null }> } };
+export type CreatePagesQuery = { site?: { siteMetadata?: { title?: string | null, siteUrl?: string | null } | null } | null, cms: { languages: Array<{ code: string, prefix?: string | null }>, home?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null } };
 
 export type HomeQueryFragment = { home?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null };
-
-export type RoomQueryFragment = { room: Array<{ id: string, images?: Array<{ directus_files_id?: { id: string, title?: string | null, file?: { childImageSharp?: { gatsbyImageData: any, original?: { width?: number | null, height?: number | null } | null } | null } | null } | null } | null> | null }> };

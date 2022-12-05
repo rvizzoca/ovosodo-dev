@@ -32,7 +32,6 @@ export const createPages = async ({
           prefix
         }
         ...HomeQuery
-        ...RoomQuery
       }
     }
   `)
