@@ -100,17 +100,18 @@ const Style = css`
   align-items: center;
   justify-content: center;
   height: 3.125rem;
-  background: ${theme.colors.variants.secondaryLight};
-  color: ${theme.colors.variants.neutralLight5};
+  background: ${theme.colors.variants.neutralDark2};
+  color: ${theme.colors.variants.neutralLight2};
   cursor: pointer;
-  font-family: ${theme.fontFamily.heading};
+  font-family: ${theme.fontFamily.default};
   font-size: 1.0625rem;
   letter-spacing: 0.0531rem;
   line-height: 1.5rem;
   padding: 0 2.3125rem;
   transition: 0.3s ease-in-out;
   &:hover {
-    background: ${theme.colors.variants.secondaryDark};
+    background: ${theme.colors.variants.neutralLight2};
+    color: ${theme.colors.variants.neutralDark2};
   }
 `
 
