@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 
 export interface Props {
   description?: string
@@ -8,11 +8,27 @@ export interface Props {
 }
 
 export const Intro = memo(function Intro({ description, label, title }: Props) {
+  const [labelVisibility, setlabelVisibility] = useState(false)
+
   return (
     <Container>
-      {label ? <Label>{label}</Label> : null}
+      {label ? (
+        <Label className={labelVisibility ? 'visible' : undefined}>
+          {label}
+        </Label>
+      ) : null}
 
-      {title ? <Title>{title}</Title> : null}
+      {title ? (
+        <Title
+          onClick={() => {
+            labelVisibility
+              ? setlabelVisibility(false)
+              : setlabelVisibility(true)
+          }}
+        >
+          {title}
+        </Title>
+      ) : null}
 
       {description ? (
         <Description dangerouslySetInnerHTML={{ __html: description }} />
@@ -23,7 +39,13 @@ export const Intro = memo(function Intro({ description, label, title }: Props) {
 
 const Container = styled.section``
 
-const Label = styled.div``
+const Label = styled.div`
+  opacity: 0;
+
+  &.visible {
+    opacity: 1;
+  }
+`
 
 const Title = styled.h2``
 
