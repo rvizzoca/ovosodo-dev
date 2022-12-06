@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { CardsList } from 'app/components/CardsList'
 import { Intro } from 'app/components/Intro'
 import { Slider } from 'app/components/Slider'
+import { VideoPlayer } from 'app/components/VideoPlayer'
 import { PageProps } from 'gatsby'
 import React, { memo } from 'react'
 
@@ -24,6 +25,7 @@ export default memo(function HomePageTemplate({
 
   return (
     <Container>
+      <VideoPlayer video={'./video.mp4'} />
       {context.cardsListProps ? (
         <CardsList {...context.cardsListProps} />
       ) : null}
