@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { FlexBox } from 'app/components/Layout/FlexBox'
-import React, { memo, useRef, useState } from 'react'
+import React, { memo, useState } from 'react'
 
 export interface Props {
   video: string
