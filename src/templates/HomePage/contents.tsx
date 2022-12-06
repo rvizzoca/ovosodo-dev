@@ -8,15 +8,25 @@ import { PageContext } from '.'
 export interface Props {
   cardsListProps: CardsListProps | undefined
   sliderProps: SliderProps | undefined
+  video: string | undefined
 }
 
 export const getHomePageProps = (
   query: CreatePagesQuery,
   pageContext: PageContext,
 ): Props => {
+  const home = query.cms?.home
+
+  const translation = home?.translations?.find(
+    (t: any) => t?.languages_id?.code === pageContext.languageCode,
+  )
+
+  const videoFile = translation?.video_file?.file?.publicURL || undefined
+
   return {
     cardsListProps: getCardsListProps(query, pageContext),
     sliderProps: getSliderProps(query, pageContext),
+    video: videoFile,
   }
 }
 

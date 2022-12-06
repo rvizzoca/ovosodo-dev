@@ -12,6 +12,13 @@ export const homeFragments = graphql`
         }
         metatag_title
         metatag_description
+        video_file {
+          id
+          filename_download
+          file {
+            publicURL
+          }
+        }
         cards_list {
           card_id {
             icon {

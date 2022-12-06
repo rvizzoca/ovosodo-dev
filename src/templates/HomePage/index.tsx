@@ -25,7 +25,7 @@ export default memo(function HomePageTemplate({
 
   return (
     <Container>
-      <VideoPlayer video={'./video.mp4'} />
+      <VideoPlayer video={context.video} />
       {context.cardsListProps ? (
         <CardsList {...context.cardsListProps} />
       ) : null}
