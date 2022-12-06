@@ -14,13 +14,12 @@ export const VideoPlayer = memo(function VideoPlayer({ video }: Props) {
       <Laptop>
         <Video
           src={video}
-          onClick={(e) => {
-            let video = e.target as HTMLVideoElement
+          onClick={(e: any) => {
             if (videoPlayback) {
-              video.pause()
+              e.target.pause()
               setvideoPlayback(false)
             } else {
-              video.play()
+              e.target.play()
               setvideoPlayback(true)
             }
           }}

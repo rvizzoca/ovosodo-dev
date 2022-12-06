@@ -1,4 +1,5 @@
 import { Props as CardsListProps } from 'app/components/CardsList'
+import { Props as ItemsListProps } from 'app/components/ItemsList'
 import { Props as SliderProps } from 'app/components/Slider'
 import { CreatePagesQuery } from 'graphql-types'
 import { compact } from 'lodash'
@@ -7,6 +8,7 @@ import { PageContext } from '.'
 
 export interface Props {
   cardsListProps: CardsListProps | undefined
+  itemsListProps: ItemsListProps | undefined
   sliderProps: SliderProps | undefined
   video: string | undefined
 }
@@ -21,12 +23,11 @@ export const getHomePageProps = (
     (t: any) => t?.languages_id?.code === pageContext.languageCode,
   )
 
-  const videoFile = translation?.video_file?.file?.publicURL || undefined
-
   return {
     cardsListProps: getCardsListProps(query, pageContext),
+    itemsListProps: translation?.test_list || undefined,
     sliderProps: getSliderProps(query, pageContext),
-    video: videoFile,
+    video: translation?.video_file?.file?.publicURL || undefined,
   }
 }
 

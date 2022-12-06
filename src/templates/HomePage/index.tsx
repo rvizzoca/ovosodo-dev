@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { CardsList } from 'app/components/CardsList'
-import { Intro } from 'app/components/Intro'
+import { ItemsList } from 'app/components/ItemsList'
 import { Slider } from 'app/components/Slider'
 import { VideoPlayer } from 'app/components/VideoPlayer'
 import { PageProps } from 'gatsby'
@@ -26,11 +26,11 @@ export default memo(function HomePageTemplate({
   return (
     <Container>
       {context.video ? <VideoPlayer video={context.video} /> : null}
+      {context.listItems ? <ItemsList {...context.listItems} /> : null}
       {context.cardsListProps ? (
         <CardsList {...context.cardsListProps} />
       ) : null}
       {context.sliderProps ? <Slider {...context.sliderProps} /> : null}
-      <Intro label="label" title="title" />
     </Container>
   )
 })
