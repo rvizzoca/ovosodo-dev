@@ -2,16 +2,21 @@ import 'keen-slider/keen-slider.min.css'
 
 import styled from '@emotion/styled'
 import { Button, Props as ButtonProps } from 'app/components/Common/Button'
-// import { Props as ImageProps } from 'app/components/Common/Image'
+import { Image, Props as ImageProps } from 'app/components/Common/Image'
 import { FlexBox } from 'app/components/Layout/FlexBox'
 import { useKeenSlider } from 'keen-slider/react'
 import React, { memo } from 'react'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
+
+interface SlideProps {
+  image?: ImageProps
+  title?: string
+}
 
 export interface Props {
   cta?: ButtonProps
   description?: string
-  // images?: ImageProps[]
-  images?: string[]
+  slides?: SlideProps[]
   label?: string
   pax?: string
   size?: string
@@ -21,7 +26,7 @@ export interface Props {
 export const Slider = memo(function Slider({
   cta,
   description,
-  images,
+  slides,
   label,
   pax,
   size,
@@ -50,16 +55,20 @@ export const Slider = memo(function Slider({
           </Description>
           <CTA label="Camere & Suites" />
         </Inner>
-        {images ? (
+        {slides ? (
           <Slides ref={sliderRef} className="keen-slider">
-            {images.map((item, index) => (
+            {slides.map((item, index) => (
               <Slide className="keen-slider__slide" key={index}>
-                <Image src={item} width="100%" height="100%" />
-                <Info>
-                  <Title>{'Titolo camera 1'}</Title>
-                  <Pax>{'6 persone'}</Pax>
-                  <Size>{'64mq'}</Size>
-                </Info>
+                <Background>
+                  {item.image ? <Image {...item.image} /> : null}
+                </Background>
+                <LazyLoadComponent>
+                  <Info>
+                    {item.title ? <Title>{item.title}</Title> : null}
+                    <Pax>{'6 persone'}</Pax>
+                    <Size>{'64mq'}</Size>
+                  </Info>
+                </LazyLoadComponent>
               </Slide>
             ))}
           </Slides>
@@ -121,12 +130,23 @@ const Slides = styled.div`
   width: 50%;
 `
 
-const Slide = styled.div`
-  max-width: 785px;
-  max-height: 550px;
-`
+const Slide = styled.div``
 
-const Image = styled.img``
+const Background = styled.div`
+  width: 100%;
+  max-width: 785px;
+  height: 550px;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`
 
 const Info = styled.div``
 

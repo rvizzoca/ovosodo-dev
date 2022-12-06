@@ -68,7 +68,6 @@ export type File = Node & {
   birthtimeMs?: Maybe<Scalars['Float']>;
   blksize?: Maybe<Scalars['Int']>;
   blocks?: Maybe<Scalars['Int']>;
-  url?: Maybe<Scalars['String']>;
   /** Copy file to static directory and return public url to it */
   publicURL?: Maybe<Scalars['String']>;
   /** Returns all children nodes filtered by type ImageSharp */
@@ -978,6 +977,8 @@ export type CmsData_Home_Translations = {
   metatag_description?: Maybe<Scalars['String']>;
   cards_list?: Maybe<Array<Maybe<CmsData_Home_Translations_Card>>>;
   cards_list_func?: Maybe<CmsData_Count_Functions>;
+  slides_list?: Maybe<Array<Maybe<CmsData_Home_Translations_Slide>>>;
+  slides_list_func?: Maybe<CmsData_Count_Functions>;
 };
 
 
@@ -1010,6 +1011,16 @@ export type CmsData_Home_TranslationsCards_ListArgs = {
   search?: InputMaybe<Scalars['String']>;
 };
 
+
+export type CmsData_Home_TranslationsSlides_ListArgs = {
+  filter?: InputMaybe<CmsData_Home_Translations_Slide_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
 export type CmsData_Home_Filter = {
   id?: InputMaybe<CmsData_String_Filter_Operators>;
   user_updated?: InputMaybe<CmsData_Directus_Users_Filter>;
@@ -1029,6 +1040,8 @@ export type CmsData_Home_Translations_Filter = {
   metatag_description?: InputMaybe<CmsData_String_Filter_Operators>;
   cards_list?: InputMaybe<CmsData_Home_Translations_Card_Filter>;
   cards_list_func?: InputMaybe<CmsData_Count_Function_Filter_Operators>;
+  slides_list?: InputMaybe<CmsData_Home_Translations_Slide_Filter>;
+  slides_list_func?: InputMaybe<CmsData_Count_Function_Filter_Operators>;
   _and?: InputMaybe<Array<InputMaybe<CmsData_Home_Translations_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<CmsData_Home_Translations_Filter>>>;
 };
@@ -1079,6 +1092,43 @@ export type CmsData_Card_Translations_Filter = {
   description?: InputMaybe<CmsData_String_Filter_Operators>;
   _and?: InputMaybe<Array<InputMaybe<CmsData_Card_Translations_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<CmsData_Card_Translations_Filter>>>;
+};
+
+export type CmsData_Home_Translations_Slide_Filter = {
+  id?: InputMaybe<CmsData_Number_Filter_Operators>;
+  home_translations_id?: InputMaybe<CmsData_Home_Translations_Filter>;
+  slide_id?: InputMaybe<CmsData_Slide_Filter>;
+  sort?: InputMaybe<CmsData_Number_Filter_Operators>;
+  _and?: InputMaybe<Array<InputMaybe<CmsData_Home_Translations_Slide_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<CmsData_Home_Translations_Slide_Filter>>>;
+};
+
+export type CmsData_Slide_Filter = {
+  id?: InputMaybe<CmsData_Number_Filter_Operators>;
+  sort?: InputMaybe<CmsData_Number_Filter_Operators>;
+  user_created?: InputMaybe<CmsData_Directus_Users_Filter>;
+  date_created?: InputMaybe<CmsData_Date_Filter_Operators>;
+  date_created_func?: InputMaybe<CmsData_Datetime_Function_Filter_Operators>;
+  user_updated?: InputMaybe<CmsData_Directus_Users_Filter>;
+  date_updated?: InputMaybe<CmsData_Date_Filter_Operators>;
+  date_updated_func?: InputMaybe<CmsData_Datetime_Function_Filter_Operators>;
+  identifier?: InputMaybe<CmsData_String_Filter_Operators>;
+  image?: InputMaybe<CmsData_Directus_Files_Filter>;
+  home_translations?: InputMaybe<CmsData_Home_Translations_Slide_Filter>;
+  home_translations_func?: InputMaybe<CmsData_Count_Function_Filter_Operators>;
+  translations?: InputMaybe<CmsData_Slide_Translations_Filter>;
+  translations_func?: InputMaybe<CmsData_Count_Function_Filter_Operators>;
+  _and?: InputMaybe<Array<InputMaybe<CmsData_Slide_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<CmsData_Slide_Filter>>>;
+};
+
+export type CmsData_Slide_Translations_Filter = {
+  id?: InputMaybe<CmsData_Number_Filter_Operators>;
+  slide_id?: InputMaybe<CmsData_Slide_Filter>;
+  languages_code?: InputMaybe<CmsData_Languages_Filter>;
+  title?: InputMaybe<CmsData_String_Filter_Operators>;
+  _and?: InputMaybe<Array<InputMaybe<CmsData_Slide_Translations_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<CmsData_Slide_Translations_Filter>>>;
 };
 
 export type CmsData_Languages = {
@@ -1211,6 +1261,127 @@ export type CmsData_Card_TranslationsLanguages_CodeArgs = {
   search?: InputMaybe<Scalars['String']>;
 };
 
+export type CmsData_Home_Translations_Slide = {
+  id: Scalars['ID'];
+  home_translations_id?: Maybe<CmsData_Home_Translations>;
+  slide_id?: Maybe<CmsData_Slide>;
+  sort?: Maybe<Scalars['Int']>;
+};
+
+
+export type CmsData_Home_Translations_SlideHome_Translations_IdArgs = {
+  filter?: InputMaybe<CmsData_Home_Translations_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_Home_Translations_SlideSlide_IdArgs = {
+  filter?: InputMaybe<CmsData_Slide_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+export type CmsData_Slide = {
+  id: Scalars['ID'];
+  sort?: Maybe<Scalars['Int']>;
+  user_created?: Maybe<CmsData_Directus_Users>;
+  date_created?: Maybe<Scalars['CMSData_Date']>;
+  date_created_func?: Maybe<CmsData_Datetime_Functions>;
+  user_updated?: Maybe<CmsData_Directus_Users>;
+  date_updated?: Maybe<Scalars['CMSData_Date']>;
+  date_updated_func?: Maybe<CmsData_Datetime_Functions>;
+  identifier: Scalars['String'];
+  image?: Maybe<CmsData_Directus_Files>;
+  home_translations?: Maybe<Array<Maybe<CmsData_Home_Translations_Slide>>>;
+  home_translations_func?: Maybe<CmsData_Count_Functions>;
+  translations?: Maybe<Array<Maybe<CmsData_Slide_Translations>>>;
+  translations_func?: Maybe<CmsData_Count_Functions>;
+};
+
+
+export type CmsData_SlideUser_CreatedArgs = {
+  filter?: InputMaybe<CmsData_Directus_Users_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_SlideUser_UpdatedArgs = {
+  filter?: InputMaybe<CmsData_Directus_Users_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_SlideImageArgs = {
+  filter?: InputMaybe<CmsData_Directus_Files_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_SlideHome_TranslationsArgs = {
+  filter?: InputMaybe<CmsData_Home_Translations_Slide_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_SlideTranslationsArgs = {
+  filter?: InputMaybe<CmsData_Slide_Translations_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+export type CmsData_Slide_Translations = {
+  id: Scalars['ID'];
+  slide_id?: Maybe<CmsData_Slide>;
+  languages_code?: Maybe<CmsData_Languages>;
+  title?: Maybe<Scalars['String']>;
+};
+
+
+export type CmsData_Slide_TranslationsSlide_IdArgs = {
+  filter?: InputMaybe<CmsData_Slide_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_Slide_TranslationsLanguages_CodeArgs = {
+  filter?: InputMaybe<CmsData_Languages_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
 export type CmsData_Languages_Aggregated = {
   group?: Maybe<Scalars['CMSData_JSON']>;
   countAll?: Maybe<Scalars['Int']>;
@@ -1256,6 +1427,7 @@ export type CmsData_Home_Translations_Aggregated_Count = {
   metatag_title?: Maybe<Scalars['Int']>;
   metatag_description?: Maybe<Scalars['Int']>;
   cards_list?: Maybe<Scalars['Int']>;
+  slides_list?: Maybe<Scalars['Int']>;
 };
 
 export type CmsData_Home_Translations_Aggregated_Fields = {
@@ -1343,65 +1515,87 @@ export type CmsData_Home_Translations_Card_Aggregated_Fields = {
   sort?: Maybe<Scalars['Float']>;
 };
 
-export type CmsData_Home_Files = {
-  id: Scalars['ID'];
-  home_id?: Maybe<CmsData_Home>;
-  directus_files_id?: Maybe<CmsData_Directus_Files>;
-  sort?: Maybe<Scalars['Int']>;
-};
-
-
-export type CmsData_Home_FilesHome_IdArgs = {
-  filter?: InputMaybe<CmsData_Home_Filter>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-};
-
-
-export type CmsData_Home_FilesDirectus_Files_IdArgs = {
-  filter?: InputMaybe<CmsData_Directus_Files_Filter>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-};
-
-export type CmsData_Home_Files_Filter = {
-  id?: InputMaybe<CmsData_Number_Filter_Operators>;
-  home_id?: InputMaybe<CmsData_Home_Filter>;
-  directus_files_id?: InputMaybe<CmsData_Directus_Files_Filter>;
-  sort?: InputMaybe<CmsData_Number_Filter_Operators>;
-  _and?: InputMaybe<Array<InputMaybe<CmsData_Home_Files_Filter>>>;
-  _or?: InputMaybe<Array<InputMaybe<CmsData_Home_Files_Filter>>>;
-};
-
-export type CmsData_Home_Files_Aggregated = {
+export type CmsData_Slide_Aggregated = {
   group?: Maybe<Scalars['CMSData_JSON']>;
   countAll?: Maybe<Scalars['Int']>;
-  count?: Maybe<CmsData_Home_Files_Aggregated_Count>;
-  countDistinct?: Maybe<CmsData_Home_Files_Aggregated_Count>;
-  avg?: Maybe<CmsData_Home_Files_Aggregated_Fields>;
-  sum?: Maybe<CmsData_Home_Files_Aggregated_Fields>;
-  avgDistinct?: Maybe<CmsData_Home_Files_Aggregated_Fields>;
-  sumDistinct?: Maybe<CmsData_Home_Files_Aggregated_Fields>;
-  min?: Maybe<CmsData_Home_Files_Aggregated_Fields>;
-  max?: Maybe<CmsData_Home_Files_Aggregated_Fields>;
+  count?: Maybe<CmsData_Slide_Aggregated_Count>;
+  countDistinct?: Maybe<CmsData_Slide_Aggregated_Count>;
+  avg?: Maybe<CmsData_Slide_Aggregated_Fields>;
+  sum?: Maybe<CmsData_Slide_Aggregated_Fields>;
+  avgDistinct?: Maybe<CmsData_Slide_Aggregated_Fields>;
+  sumDistinct?: Maybe<CmsData_Slide_Aggregated_Fields>;
+  min?: Maybe<CmsData_Slide_Aggregated_Fields>;
+  max?: Maybe<CmsData_Slide_Aggregated_Fields>;
 };
 
-export type CmsData_Home_Files_Aggregated_Count = {
+export type CmsData_Slide_Aggregated_Count = {
   id?: Maybe<Scalars['Int']>;
-  home_id?: Maybe<Scalars['Int']>;
-  directus_files_id?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['Int']>;
+  user_created?: Maybe<Scalars['Int']>;
+  date_created?: Maybe<Scalars['Int']>;
+  user_updated?: Maybe<Scalars['Int']>;
+  date_updated?: Maybe<Scalars['Int']>;
+  identifier?: Maybe<Scalars['Int']>;
+  image?: Maybe<Scalars['Int']>;
+  home_translations?: Maybe<Scalars['Int']>;
+  translations?: Maybe<Scalars['Int']>;
+};
+
+export type CmsData_Slide_Aggregated_Fields = {
+  id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
+};
+
+export type CmsData_Home_Translations_Slide_Aggregated = {
+  group?: Maybe<Scalars['CMSData_JSON']>;
+  countAll?: Maybe<Scalars['Int']>;
+  count?: Maybe<CmsData_Home_Translations_Slide_Aggregated_Count>;
+  countDistinct?: Maybe<CmsData_Home_Translations_Slide_Aggregated_Count>;
+  avg?: Maybe<CmsData_Home_Translations_Slide_Aggregated_Fields>;
+  sum?: Maybe<CmsData_Home_Translations_Slide_Aggregated_Fields>;
+  avgDistinct?: Maybe<CmsData_Home_Translations_Slide_Aggregated_Fields>;
+  sumDistinct?: Maybe<CmsData_Home_Translations_Slide_Aggregated_Fields>;
+  min?: Maybe<CmsData_Home_Translations_Slide_Aggregated_Fields>;
+  max?: Maybe<CmsData_Home_Translations_Slide_Aggregated_Fields>;
+};
+
+export type CmsData_Home_Translations_Slide_Aggregated_Count = {
+  id?: Maybe<Scalars['Int']>;
+  home_translations_id?: Maybe<Scalars['Int']>;
+  slide_id?: Maybe<Scalars['Int']>;
   sort?: Maybe<Scalars['Int']>;
 };
 
-export type CmsData_Home_Files_Aggregated_Fields = {
+export type CmsData_Home_Translations_Slide_Aggregated_Fields = {
   id?: Maybe<Scalars['Float']>;
+  home_translations_id?: Maybe<Scalars['Float']>;
+  slide_id?: Maybe<Scalars['Float']>;
   sort?: Maybe<Scalars['Float']>;
+};
+
+export type CmsData_Slide_Translations_Aggregated = {
+  group?: Maybe<Scalars['CMSData_JSON']>;
+  countAll?: Maybe<Scalars['Int']>;
+  count?: Maybe<CmsData_Slide_Translations_Aggregated_Count>;
+  countDistinct?: Maybe<CmsData_Slide_Translations_Aggregated_Count>;
+  avg?: Maybe<CmsData_Slide_Translations_Aggregated_Fields>;
+  sum?: Maybe<CmsData_Slide_Translations_Aggregated_Fields>;
+  avgDistinct?: Maybe<CmsData_Slide_Translations_Aggregated_Fields>;
+  sumDistinct?: Maybe<CmsData_Slide_Translations_Aggregated_Fields>;
+  min?: Maybe<CmsData_Slide_Translations_Aggregated_Fields>;
+  max?: Maybe<CmsData_Slide_Translations_Aggregated_Fields>;
+};
+
+export type CmsData_Slide_Translations_Aggregated_Count = {
+  id?: Maybe<Scalars['Int']>;
+  slide_id?: Maybe<Scalars['Int']>;
+  languages_code?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['Int']>;
+};
+
+export type CmsData_Slide_Translations_Aggregated_Fields = {
+  id?: Maybe<Scalars['Float']>;
+  slide_id?: Maybe<Scalars['Float']>;
 };
 
 export type CmsData_Create_Languages_Input = {
@@ -1419,6 +1613,7 @@ export type CmsData_Create_Home_Translations_Input = {
   metatag_title?: InputMaybe<Scalars['String']>;
   metatag_description?: InputMaybe<Scalars['String']>;
   cards_list?: InputMaybe<Array<InputMaybe<CmsData_Create_Home_Translations_Card_Input>>>;
+  slides_list?: InputMaybe<Array<InputMaybe<CmsData_Create_Home_Translations_Slide_Input>>>;
 };
 
 export type CmsData_Create_Home_Input = {
@@ -1523,11 +1718,31 @@ export type CmsData_Create_Card_Translations_Input = {
   description?: InputMaybe<Scalars['String']>;
 };
 
-export type CmsData_Create_Home_Files_Input = {
+export type CmsData_Create_Home_Translations_Slide_Input = {
   id?: InputMaybe<Scalars['ID']>;
-  home_id?: InputMaybe<CmsData_Create_Home_Input>;
-  directus_files_id?: InputMaybe<CmsData_Create_Directus_Files_Input>;
+  home_translations_id?: InputMaybe<CmsData_Create_Home_Translations_Input>;
+  slide_id?: InputMaybe<CmsData_Create_Slide_Input>;
   sort?: InputMaybe<Scalars['Int']>;
+};
+
+export type CmsData_Create_Slide_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  sort?: InputMaybe<Scalars['Int']>;
+  user_created?: InputMaybe<CmsData_Create_Directus_Users_Input>;
+  date_created?: InputMaybe<Scalars['CMSData_Date']>;
+  user_updated?: InputMaybe<CmsData_Create_Directus_Users_Input>;
+  date_updated?: InputMaybe<Scalars['CMSData_Date']>;
+  identifier: Scalars['String'];
+  image?: InputMaybe<CmsData_Create_Directus_Files_Input>;
+  home_translations?: InputMaybe<Array<InputMaybe<CmsData_Create_Home_Translations_Slide_Input>>>;
+  translations?: InputMaybe<Array<InputMaybe<CmsData_Create_Slide_Translations_Input>>>;
+};
+
+export type CmsData_Create_Slide_Translations_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  slide_id?: InputMaybe<CmsData_Create_Slide_Input>;
+  languages_code?: InputMaybe<CmsData_Create_Languages_Input>;
+  title?: InputMaybe<Scalars['String']>;
 };
 
 export type CmsData_Update_Home_Input = {
@@ -1611,6 +1826,7 @@ export type CmsData_Update_Home_Translations_Input = {
   metatag_title?: InputMaybe<Scalars['String']>;
   metatag_description?: InputMaybe<Scalars['String']>;
   cards_list?: InputMaybe<Array<InputMaybe<CmsData_Update_Home_Translations_Card_Input>>>;
+  slides_list?: InputMaybe<Array<InputMaybe<CmsData_Update_Home_Translations_Slide_Input>>>;
 };
 
 export type CmsData_Update_Languages_Input = {
@@ -1649,11 +1865,31 @@ export type CmsData_Update_Card_Translations_Input = {
   description?: InputMaybe<Scalars['String']>;
 };
 
-export type CmsData_Update_Home_Files_Input = {
+export type CmsData_Update_Home_Translations_Slide_Input = {
   id?: InputMaybe<Scalars['ID']>;
-  home_id?: InputMaybe<CmsData_Update_Home_Input>;
-  directus_files_id?: InputMaybe<CmsData_Update_Directus_Files_Input>;
+  home_translations_id?: InputMaybe<CmsData_Update_Home_Translations_Input>;
+  slide_id?: InputMaybe<CmsData_Update_Slide_Input>;
   sort?: InputMaybe<Scalars['Int']>;
+};
+
+export type CmsData_Update_Slide_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  sort?: InputMaybe<Scalars['Int']>;
+  user_created?: InputMaybe<CmsData_Update_Directus_Users_Input>;
+  date_created?: InputMaybe<Scalars['CMSData_Date']>;
+  user_updated?: InputMaybe<CmsData_Update_Directus_Users_Input>;
+  date_updated?: InputMaybe<Scalars['CMSData_Date']>;
+  identifier?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<CmsData_Update_Directus_Files_Input>;
+  home_translations?: InputMaybe<Array<InputMaybe<CmsData_Update_Home_Translations_Slide_Input>>>;
+  translations?: InputMaybe<Array<InputMaybe<CmsData_Update_Slide_Translations_Input>>>;
+};
+
+export type CmsData_Update_Slide_Translations_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  slide_id?: InputMaybe<CmsData_Update_Slide_Input>;
+  languages_code?: InputMaybe<CmsData_Update_Languages_Input>;
+  title?: InputMaybe<Scalars['String']>;
 };
 
 export type CmsData_Delete_Many = {
@@ -1681,9 +1917,15 @@ export type CmsData = {
   home_translations_card: Array<CmsData_Home_Translations_Card>;
   home_translations_card_by_id?: Maybe<CmsData_Home_Translations_Card>;
   home_translations_card_aggregated: Array<CmsData_Home_Translations_Card_Aggregated>;
-  home_files: Array<CmsData_Home_Files>;
-  home_files_by_id?: Maybe<CmsData_Home_Files>;
-  home_files_aggregated: Array<CmsData_Home_Files_Aggregated>;
+  slide: Array<CmsData_Slide>;
+  slide_by_id?: Maybe<CmsData_Slide>;
+  slide_aggregated: Array<CmsData_Slide_Aggregated>;
+  home_translations_slide: Array<CmsData_Home_Translations_Slide>;
+  home_translations_slide_by_id?: Maybe<CmsData_Home_Translations_Slide>;
+  home_translations_slide_aggregated: Array<CmsData_Home_Translations_Slide_Aggregated>;
+  slide_translations: Array<CmsData_Slide_Translations>;
+  slide_translations_by_id?: Maybe<CmsData_Slide_Translations>;
+  slide_translations_aggregated: Array<CmsData_Slide_Translations_Aggregated>;
 };
 
 
@@ -1807,8 +2049,8 @@ export type CmsDataHome_Translations_Card_AggregatedArgs = {
 };
 
 
-export type CmsDataHome_FilesArgs = {
-  filter?: InputMaybe<CmsData_Home_Files_Filter>;
+export type CmsDataSlideArgs = {
+  filter?: InputMaybe<CmsData_Slide_Filter>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -1817,14 +2059,62 @@ export type CmsDataHome_FilesArgs = {
 };
 
 
-export type CmsDataHome_Files_By_IdArgs = {
+export type CmsDataSlide_By_IdArgs = {
   id: Scalars['ID'];
 };
 
 
-export type CmsDataHome_Files_AggregatedArgs = {
+export type CmsDataSlide_AggregatedArgs = {
   groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  filter?: InputMaybe<CmsData_Home_Files_Filter>;
+  filter?: InputMaybe<CmsData_Slide_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CmsDataHome_Translations_SlideArgs = {
+  filter?: InputMaybe<CmsData_Home_Translations_Slide_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsDataHome_Translations_Slide_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type CmsDataHome_Translations_Slide_AggregatedArgs = {
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filter?: InputMaybe<CmsData_Home_Translations_Slide_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CmsDataSlide_TranslationsArgs = {
+  filter?: InputMaybe<CmsData_Slide_Translations_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsDataSlide_Translations_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type CmsDataSlide_Translations_AggregatedArgs = {
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filter?: InputMaybe<CmsData_Slide_Translations_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   search?: InputMaybe<Scalars['String']>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -1887,7 +2177,6 @@ export type QueryFileArgs = {
   birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
   blksize?: InputMaybe<IntQueryOperatorInput>;
   blocks?: InputMaybe<IntQueryOperatorInput>;
-  url?: InputMaybe<StringQueryOperatorInput>;
   publicURL?: InputMaybe<StringQueryOperatorInput>;
   childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
   childImageSharp?: InputMaybe<ImageSharpFilterInput>;
@@ -2331,7 +2620,6 @@ export type FileFieldsEnum =
   | 'birthtimeMs'
   | 'blksize'
   | 'blocks'
-  | 'url'
   | 'publicURL'
   | 'childrenImageSharp'
   | 'childrenImageSharp___fixed___base64'
@@ -2649,7 +2937,6 @@ export type FileFilterInput = {
   birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
   blksize?: InputMaybe<IntQueryOperatorInput>;
   blocks?: InputMaybe<IntQueryOperatorInput>;
-  url?: InputMaybe<StringQueryOperatorInput>;
   publicURL?: InputMaybe<StringQueryOperatorInput>;
   childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
   childImageSharp?: InputMaybe<ImageSharpFilterInput>;
@@ -4438,6 +4725,6 @@ export type GraphQlSourceSortInput = {
 export type CreatePagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CreatePagesQuery = { site?: { siteMetadata?: { title?: string | null, siteUrl?: string | null } | null } | null, cms: { languages: Array<{ code: string, prefix?: string | null }>, home?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null } };
+export type CreatePagesQuery = { site?: { siteMetadata?: { title?: string | null, siteUrl?: string | null } | null } | null, cms: { languages: Array<{ code: string, prefix?: string | null }>, home?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null, slides_list?: Array<{ slide_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null } };
 
-export type HomeQueryFragment = { home?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null };
+export type HomeQueryFragment = { home?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null, slides_list?: Array<{ slide_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null };

@@ -31,6 +31,27 @@ export const homeFragments = graphql`
             }
           }
         }
+        slides_list {
+          slide_id {
+            image {
+              id
+              title
+              filename_download
+              file {
+                childImageSharp {
+                  gatsbyImageData(layout: FIXED, height: 700)
+                }
+              }
+            }
+            translations {
+              languages_code {
+                code
+                prefix
+              }
+              title
+            }
+          }
+        }
       }
     }
   }

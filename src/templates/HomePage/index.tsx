@@ -16,12 +16,6 @@ export interface Context extends PageContext {
   props: Props
 }
 
-const sliderImages = [
-  'https://www.roomofandrea.it/wp-content/uploads/2020/01/rooms.jpg',
-  'https://www.xotels.com/wp-content/uploads/2020/03/hotel-room-type-xotels-hotel-management-company.webp',
-  'https://www.ikea.com/images/a-slattum-upholstered-bed-and-various-white-nordli-chests-of-6b6a06f902c303389a40adc08c3512fc.jpg',
-]
-
 export default memo(function HomePageTemplate({
   pageContext,
 }: PageProps<void, Context>) {
@@ -32,7 +26,7 @@ export default memo(function HomePageTemplate({
       {context.cardsListProps ? (
         <CardsList {...context.cardsListProps} />
       ) : null}
-      <Slider images={sliderImages} />
+      {context.sliderProps ? <Slider {...context.sliderProps} /> : null}
     </Container>
   )
 })
