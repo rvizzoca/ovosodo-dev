@@ -1,4 +1,5 @@
 import { Props as CardsListProps } from 'app/components/CardsList'
+import { Props as GalleryCategoriesProps } from 'app/components/GalleryCategories'
 import { Props as ItemsListProps } from 'app/components/ItemsList'
 import { Props as SliderProps } from 'app/components/Slider'
 import { Props as VideoPlayerProps } from 'app/components/VideoPlayer'
@@ -12,6 +13,7 @@ export interface Props {
   sliderProps: SliderProps | undefined
   videoPlayerProps: VideoPlayerProps | undefined
   itemsListProps: ItemsListProps | undefined
+  galleryCategoriesProps: GalleryCategoriesProps | undefined
 }
 
 export const getHomePageProps = (
@@ -23,6 +25,7 @@ export const getHomePageProps = (
     sliderProps: getSliderProps(query, pageContext),
     videoPlayerProps: getVideoPlayerProps(query, pageContext),
     itemsListProps: getItemsListProps(query, pageContext),
+    galleryCategoriesProps: getGalleryCategoriesProps(query, pageContext),
   }
 }
 
@@ -155,4 +158,76 @@ const getItemsListProps = (
   return {
     items,
   }
+}
+
+const getGalleryCategoriesProps = (
+  query: CreatePagesQuery,
+  pageContext: PageContext,
+): GalleryCategoriesProps | undefined => {
+  const home = query.cms?.home
+
+  if (!home) {
+    return undefined
+  }
+
+  const categories = compact(home.categories_list).map(
+    ({ gallery_categories_id }) => {
+      const translation = gallery_categories_id?.translations?.find(
+        (t: any) => t?.languages_code?.code === pageContext.languageCode,
+      )
+
+      const images = compact(
+        compact(gallery_categories_id?.images).map(({ directus_files_id }) => {
+          const image = directus_files_id?.file?.childImageSharp
+
+          return image
+            ? {
+                alt: directus_files_id?.title || undefined,
+                category: translation?.title,
+                sources: image.gatsbyImageData.images.sources[0].srcSet,
+                src: image?.gatsbyImageData.images.fallback.src,
+                srcSet: image?.gatsbyImageData.images.fallback.srcSet,
+                width: image?.original?.width || 0,
+                height: image?.original?.height || 0,
+              }
+            : undefined
+        }),
+      )
+
+      const thumbnails = compact(
+        compact(gallery_categories_id?.images).map(({ directus_files_id }) => {
+          const image = directus_files_id?.file?.childImageSharp?.thumbnails
+
+          return image
+            ? {
+                alt: directus_files_id?.title || undefined,
+                sources: image.images.sources[0].srcSet,
+                src: image?.images.fallback.src,
+                srcSet: image?.images.fallback.srcSet,
+                width: image?.width || 0,
+                height: image?.height || 0,
+              }
+            : undefined
+        }),
+      )
+
+      const title = translation?.title
+
+      return title
+        ? {
+            languageCode: pageContext.languageCode,
+            images: compact(images),
+            thumbnails: compact(thumbnails),
+            title,
+          }
+        : undefined
+    },
+  )
+
+  return categories
+    ? {
+        categories: compact(categories),
+        languageCode: pageContext.languageCode,
+      }
+    : undefined
 }

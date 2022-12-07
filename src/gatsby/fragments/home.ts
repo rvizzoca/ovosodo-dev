@@ -4,6 +4,32 @@ export const homeFragments = graphql`
   fragment HomeQuery on CMSData {
     home {
       id
+      categories_list {
+        gallery_categories_id {
+          images {
+            directus_files_id {
+              id
+              title
+              file {
+                childImageSharp {
+                  gatsbyImageData(layout: FULL_WIDTH)
+                  thumbnails: gatsbyImageData(layout: FIXED, height: 400)
+                  original {
+                    width
+                    height
+                  }
+                }
+              }
+            }
+          }
+          translations {
+            languages_code {
+              code
+            }
+            title
+          }
+        }
+      }
       translations {
         languages_id {
           code

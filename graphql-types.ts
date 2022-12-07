@@ -626,6 +626,8 @@ export type CmsData_Home = {
   date_updated_func?: Maybe<CmsData_Datetime_Functions>;
   translations?: Maybe<Array<Maybe<CmsData_Home_Translations>>>;
   translations_func?: Maybe<CmsData_Count_Functions>;
+  categories_list?: Maybe<Array<Maybe<CmsData_Home_Gallery_Categories>>>;
+  categories_list_func?: Maybe<CmsData_Count_Functions>;
 };
 
 
@@ -641,6 +643,16 @@ export type CmsData_HomeUser_UpdatedArgs = {
 
 export type CmsData_HomeTranslationsArgs = {
   filter?: InputMaybe<CmsData_Home_Translations_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_HomeCategories_ListArgs = {
+  filter?: InputMaybe<CmsData_Home_Gallery_Categories_Filter>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -1041,6 +1053,8 @@ export type CmsData_Home_Filter = {
   date_updated_func?: InputMaybe<CmsData_Datetime_Function_Filter_Operators>;
   translations?: InputMaybe<CmsData_Home_Translations_Filter>;
   translations_func?: InputMaybe<CmsData_Count_Function_Filter_Operators>;
+  categories_list?: InputMaybe<CmsData_Home_Gallery_Categories_Filter>;
+  categories_list_func?: InputMaybe<CmsData_Count_Function_Filter_Operators>;
   _and?: InputMaybe<Array<InputMaybe<CmsData_Home_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<CmsData_Home_Filter>>>;
 };
@@ -1145,6 +1159,53 @@ export type CmsData_Slide_Translations_Filter = {
   title?: InputMaybe<CmsData_String_Filter_Operators>;
   _and?: InputMaybe<Array<InputMaybe<CmsData_Slide_Translations_Filter>>>;
   _or?: InputMaybe<Array<InputMaybe<CmsData_Slide_Translations_Filter>>>;
+};
+
+export type CmsData_Home_Gallery_Categories_Filter = {
+  id?: InputMaybe<CmsData_Number_Filter_Operators>;
+  home_id?: InputMaybe<CmsData_Home_Filter>;
+  gallery_categories_id?: InputMaybe<CmsData_Gallery_Categories_Filter>;
+  sort?: InputMaybe<CmsData_Number_Filter_Operators>;
+  _and?: InputMaybe<Array<InputMaybe<CmsData_Home_Gallery_Categories_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<CmsData_Home_Gallery_Categories_Filter>>>;
+};
+
+export type CmsData_Gallery_Categories_Filter = {
+  id?: InputMaybe<CmsData_String_Filter_Operators>;
+  sort?: InputMaybe<CmsData_Number_Filter_Operators>;
+  user_created?: InputMaybe<CmsData_Directus_Users_Filter>;
+  date_created?: InputMaybe<CmsData_Date_Filter_Operators>;
+  date_created_func?: InputMaybe<CmsData_Datetime_Function_Filter_Operators>;
+  user_updated?: InputMaybe<CmsData_Directus_Users_Filter>;
+  date_updated?: InputMaybe<CmsData_Date_Filter_Operators>;
+  date_updated_func?: InputMaybe<CmsData_Datetime_Function_Filter_Operators>;
+  identifier?: InputMaybe<CmsData_String_Filter_Operators>;
+  translations?: InputMaybe<CmsData_Gallery_Categories_Translations_Filter>;
+  translations_func?: InputMaybe<CmsData_Count_Function_Filter_Operators>;
+  images?: InputMaybe<CmsData_Gallery_Categories_Files_Filter>;
+  images_func?: InputMaybe<CmsData_Count_Function_Filter_Operators>;
+  home?: InputMaybe<CmsData_Home_Gallery_Categories_Filter>;
+  home_func?: InputMaybe<CmsData_Count_Function_Filter_Operators>;
+  _and?: InputMaybe<Array<InputMaybe<CmsData_Gallery_Categories_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<CmsData_Gallery_Categories_Filter>>>;
+};
+
+export type CmsData_Gallery_Categories_Translations_Filter = {
+  id?: InputMaybe<CmsData_Number_Filter_Operators>;
+  gallery_categories_id?: InputMaybe<CmsData_Gallery_Categories_Filter>;
+  languages_code?: InputMaybe<CmsData_Languages_Filter>;
+  title?: InputMaybe<CmsData_String_Filter_Operators>;
+  _and?: InputMaybe<Array<InputMaybe<CmsData_Gallery_Categories_Translations_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<CmsData_Gallery_Categories_Translations_Filter>>>;
+};
+
+export type CmsData_Gallery_Categories_Files_Filter = {
+  id?: InputMaybe<CmsData_Number_Filter_Operators>;
+  gallery_categories_id?: InputMaybe<CmsData_Gallery_Categories_Filter>;
+  directus_files_id?: InputMaybe<CmsData_Directus_Files_Filter>;
+  sort?: InputMaybe<CmsData_Number_Filter_Operators>;
+  _and?: InputMaybe<Array<InputMaybe<CmsData_Gallery_Categories_Files_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<CmsData_Gallery_Categories_Files_Filter>>>;
 };
 
 export type CmsData_Languages = {
@@ -1391,6 +1452,155 @@ export type CmsData_Slide_TranslationsSlide_IdArgs = {
 
 export type CmsData_Slide_TranslationsLanguages_CodeArgs = {
   filter?: InputMaybe<CmsData_Languages_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+export type CmsData_Home_Gallery_Categories = {
+  id: Scalars['ID'];
+  home_id?: Maybe<CmsData_Home>;
+  gallery_categories_id?: Maybe<CmsData_Gallery_Categories>;
+  sort?: Maybe<Scalars['Int']>;
+};
+
+
+export type CmsData_Home_Gallery_CategoriesHome_IdArgs = {
+  filter?: InputMaybe<CmsData_Home_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_Home_Gallery_CategoriesGallery_Categories_IdArgs = {
+  filter?: InputMaybe<CmsData_Gallery_Categories_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+export type CmsData_Gallery_Categories = {
+  id: Scalars['ID'];
+  sort?: Maybe<Scalars['Int']>;
+  user_created?: Maybe<CmsData_Directus_Users>;
+  date_created?: Maybe<Scalars['CMSData_Date']>;
+  date_created_func?: Maybe<CmsData_Datetime_Functions>;
+  user_updated?: Maybe<CmsData_Directus_Users>;
+  date_updated?: Maybe<Scalars['CMSData_Date']>;
+  date_updated_func?: Maybe<CmsData_Datetime_Functions>;
+  identifier: Scalars['String'];
+  translations?: Maybe<Array<Maybe<CmsData_Gallery_Categories_Translations>>>;
+  translations_func?: Maybe<CmsData_Count_Functions>;
+  images?: Maybe<Array<Maybe<CmsData_Gallery_Categories_Files>>>;
+  images_func?: Maybe<CmsData_Count_Functions>;
+  home?: Maybe<Array<Maybe<CmsData_Home_Gallery_Categories>>>;
+  home_func?: Maybe<CmsData_Count_Functions>;
+};
+
+
+export type CmsData_Gallery_CategoriesUser_CreatedArgs = {
+  filter?: InputMaybe<CmsData_Directus_Users_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_Gallery_CategoriesUser_UpdatedArgs = {
+  filter?: InputMaybe<CmsData_Directus_Users_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_Gallery_CategoriesTranslationsArgs = {
+  filter?: InputMaybe<CmsData_Gallery_Categories_Translations_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_Gallery_CategoriesImagesArgs = {
+  filter?: InputMaybe<CmsData_Gallery_Categories_Files_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_Gallery_CategoriesHomeArgs = {
+  filter?: InputMaybe<CmsData_Home_Gallery_Categories_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+export type CmsData_Gallery_Categories_Translations = {
+  id: Scalars['ID'];
+  gallery_categories_id?: Maybe<CmsData_Gallery_Categories>;
+  languages_code?: Maybe<CmsData_Languages>;
+  title: Scalars['String'];
+};
+
+
+export type CmsData_Gallery_Categories_TranslationsGallery_Categories_IdArgs = {
+  filter?: InputMaybe<CmsData_Gallery_Categories_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_Gallery_Categories_TranslationsLanguages_CodeArgs = {
+  filter?: InputMaybe<CmsData_Languages_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+export type CmsData_Gallery_Categories_Files = {
+  id: Scalars['ID'];
+  gallery_categories_id?: Maybe<CmsData_Gallery_Categories>;
+  directus_files_id?: Maybe<CmsData_Directus_Files>;
+  sort?: Maybe<Scalars['Int']>;
+};
+
+
+export type CmsData_Gallery_Categories_FilesGallery_Categories_IdArgs = {
+  filter?: InputMaybe<CmsData_Gallery_Categories_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_Gallery_Categories_FilesDirectus_Files_IdArgs = {
+  filter?: InputMaybe<CmsData_Directus_Files_Filter>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -1751,6 +1961,110 @@ export type CmsData_Vocabulary_Translations_Aggregated_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+export type CmsData_Gallery_Categories_Aggregated = {
+  group?: Maybe<Scalars['CMSData_JSON']>;
+  countAll?: Maybe<Scalars['Int']>;
+  count?: Maybe<CmsData_Gallery_Categories_Aggregated_Count>;
+  countDistinct?: Maybe<CmsData_Gallery_Categories_Aggregated_Count>;
+  avg?: Maybe<CmsData_Gallery_Categories_Aggregated_Fields>;
+  sum?: Maybe<CmsData_Gallery_Categories_Aggregated_Fields>;
+  avgDistinct?: Maybe<CmsData_Gallery_Categories_Aggregated_Fields>;
+  sumDistinct?: Maybe<CmsData_Gallery_Categories_Aggregated_Fields>;
+  min?: Maybe<CmsData_Gallery_Categories_Aggregated_Fields>;
+  max?: Maybe<CmsData_Gallery_Categories_Aggregated_Fields>;
+};
+
+export type CmsData_Gallery_Categories_Aggregated_Count = {
+  id?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['Int']>;
+  user_created?: Maybe<Scalars['Int']>;
+  date_created?: Maybe<Scalars['Int']>;
+  user_updated?: Maybe<Scalars['Int']>;
+  date_updated?: Maybe<Scalars['Int']>;
+  identifier?: Maybe<Scalars['Int']>;
+  translations?: Maybe<Scalars['Int']>;
+  images?: Maybe<Scalars['Int']>;
+  home?: Maybe<Scalars['Int']>;
+};
+
+export type CmsData_Gallery_Categories_Aggregated_Fields = {
+  sort?: Maybe<Scalars['Float']>;
+};
+
+export type CmsData_Gallery_Categories_Translations_Aggregated = {
+  group?: Maybe<Scalars['CMSData_JSON']>;
+  countAll?: Maybe<Scalars['Int']>;
+  count?: Maybe<CmsData_Gallery_Categories_Translations_Aggregated_Count>;
+  countDistinct?: Maybe<CmsData_Gallery_Categories_Translations_Aggregated_Count>;
+  avg?: Maybe<CmsData_Gallery_Categories_Translations_Aggregated_Fields>;
+  sum?: Maybe<CmsData_Gallery_Categories_Translations_Aggregated_Fields>;
+  avgDistinct?: Maybe<CmsData_Gallery_Categories_Translations_Aggregated_Fields>;
+  sumDistinct?: Maybe<CmsData_Gallery_Categories_Translations_Aggregated_Fields>;
+  min?: Maybe<CmsData_Gallery_Categories_Translations_Aggregated_Fields>;
+  max?: Maybe<CmsData_Gallery_Categories_Translations_Aggregated_Fields>;
+};
+
+export type CmsData_Gallery_Categories_Translations_Aggregated_Count = {
+  id?: Maybe<Scalars['Int']>;
+  gallery_categories_id?: Maybe<Scalars['Int']>;
+  languages_code?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['Int']>;
+};
+
+export type CmsData_Gallery_Categories_Translations_Aggregated_Fields = {
+  id?: Maybe<Scalars['Float']>;
+};
+
+export type CmsData_Gallery_Categories_Files_Aggregated = {
+  group?: Maybe<Scalars['CMSData_JSON']>;
+  countAll?: Maybe<Scalars['Int']>;
+  count?: Maybe<CmsData_Gallery_Categories_Files_Aggregated_Count>;
+  countDistinct?: Maybe<CmsData_Gallery_Categories_Files_Aggregated_Count>;
+  avg?: Maybe<CmsData_Gallery_Categories_Files_Aggregated_Fields>;
+  sum?: Maybe<CmsData_Gallery_Categories_Files_Aggregated_Fields>;
+  avgDistinct?: Maybe<CmsData_Gallery_Categories_Files_Aggregated_Fields>;
+  sumDistinct?: Maybe<CmsData_Gallery_Categories_Files_Aggregated_Fields>;
+  min?: Maybe<CmsData_Gallery_Categories_Files_Aggregated_Fields>;
+  max?: Maybe<CmsData_Gallery_Categories_Files_Aggregated_Fields>;
+};
+
+export type CmsData_Gallery_Categories_Files_Aggregated_Count = {
+  id?: Maybe<Scalars['Int']>;
+  gallery_categories_id?: Maybe<Scalars['Int']>;
+  directus_files_id?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['Int']>;
+};
+
+export type CmsData_Gallery_Categories_Files_Aggregated_Fields = {
+  id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
+};
+
+export type CmsData_Home_Gallery_Categories_Aggregated = {
+  group?: Maybe<Scalars['CMSData_JSON']>;
+  countAll?: Maybe<Scalars['Int']>;
+  count?: Maybe<CmsData_Home_Gallery_Categories_Aggregated_Count>;
+  countDistinct?: Maybe<CmsData_Home_Gallery_Categories_Aggregated_Count>;
+  avg?: Maybe<CmsData_Home_Gallery_Categories_Aggregated_Fields>;
+  sum?: Maybe<CmsData_Home_Gallery_Categories_Aggregated_Fields>;
+  avgDistinct?: Maybe<CmsData_Home_Gallery_Categories_Aggregated_Fields>;
+  sumDistinct?: Maybe<CmsData_Home_Gallery_Categories_Aggregated_Fields>;
+  min?: Maybe<CmsData_Home_Gallery_Categories_Aggregated_Fields>;
+  max?: Maybe<CmsData_Home_Gallery_Categories_Aggregated_Fields>;
+};
+
+export type CmsData_Home_Gallery_Categories_Aggregated_Count = {
+  id?: Maybe<Scalars['Int']>;
+  home_id?: Maybe<Scalars['Int']>;
+  gallery_categories_id?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['Int']>;
+};
+
+export type CmsData_Home_Gallery_Categories_Aggregated_Fields = {
+  id?: Maybe<Scalars['Float']>;
+  sort?: Maybe<Scalars['Float']>;
+};
+
 export type CmsData_Create_Languages_Input = {
   code: Scalars['ID'];
   name?: InputMaybe<Scalars['String']>;
@@ -1871,6 +2185,41 @@ export type CmsData_Create_Home_Input = {
   user_updated?: InputMaybe<CmsData_Create_Directus_Users_Input>;
   date_updated?: InputMaybe<Scalars['CMSData_Date']>;
   translations?: InputMaybe<Array<InputMaybe<CmsData_Create_Home_Translations_Input>>>;
+  categories_list?: InputMaybe<Array<InputMaybe<CmsData_Create_Home_Gallery_Categories_Input>>>;
+};
+
+export type CmsData_Create_Home_Gallery_Categories_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  home_id?: InputMaybe<CmsData_Create_Home_Input>;
+  gallery_categories_id?: InputMaybe<CmsData_Create_Gallery_Categories_Input>;
+  sort?: InputMaybe<Scalars['Int']>;
+};
+
+export type CmsData_Create_Gallery_Categories_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  sort?: InputMaybe<Scalars['Int']>;
+  user_created?: InputMaybe<CmsData_Create_Directus_Users_Input>;
+  date_created?: InputMaybe<Scalars['CMSData_Date']>;
+  user_updated?: InputMaybe<CmsData_Create_Directus_Users_Input>;
+  date_updated?: InputMaybe<Scalars['CMSData_Date']>;
+  identifier: Scalars['String'];
+  translations?: InputMaybe<Array<InputMaybe<CmsData_Create_Gallery_Categories_Translations_Input>>>;
+  images?: InputMaybe<Array<InputMaybe<CmsData_Create_Gallery_Categories_Files_Input>>>;
+  home?: InputMaybe<Array<InputMaybe<CmsData_Create_Home_Gallery_Categories_Input>>>;
+};
+
+export type CmsData_Create_Gallery_Categories_Translations_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  gallery_categories_id?: InputMaybe<CmsData_Create_Gallery_Categories_Input>;
+  languages_code?: InputMaybe<CmsData_Create_Languages_Input>;
+  title: Scalars['String'];
+};
+
+export type CmsData_Create_Gallery_Categories_Files_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  gallery_categories_id?: InputMaybe<CmsData_Create_Gallery_Categories_Input>;
+  directus_files_id?: InputMaybe<CmsData_Create_Directus_Files_Input>;
+  sort?: InputMaybe<Scalars['Int']>;
 };
 
 export type CmsData_Create_Home_Translations_Slide_Input = {
@@ -1922,6 +2271,7 @@ export type CmsData_Update_Home_Input = {
   user_updated?: InputMaybe<CmsData_Update_Directus_Users_Input>;
   date_updated?: InputMaybe<Scalars['CMSData_Date']>;
   translations?: InputMaybe<Array<InputMaybe<CmsData_Update_Home_Translations_Input>>>;
+  categories_list?: InputMaybe<Array<InputMaybe<CmsData_Update_Home_Gallery_Categories_Input>>>;
 };
 
 export type CmsData_Update_Directus_Users_Input = {
@@ -2066,6 +2416,40 @@ export type CmsData_Update_Slide_Translations_Input = {
   title?: InputMaybe<Scalars['String']>;
 };
 
+export type CmsData_Update_Home_Gallery_Categories_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  home_id?: InputMaybe<CmsData_Update_Home_Input>;
+  gallery_categories_id?: InputMaybe<CmsData_Update_Gallery_Categories_Input>;
+  sort?: InputMaybe<Scalars['Int']>;
+};
+
+export type CmsData_Update_Gallery_Categories_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  sort?: InputMaybe<Scalars['Int']>;
+  user_created?: InputMaybe<CmsData_Update_Directus_Users_Input>;
+  date_created?: InputMaybe<Scalars['CMSData_Date']>;
+  user_updated?: InputMaybe<CmsData_Update_Directus_Users_Input>;
+  date_updated?: InputMaybe<Scalars['CMSData_Date']>;
+  identifier?: InputMaybe<Scalars['String']>;
+  translations?: InputMaybe<Array<InputMaybe<CmsData_Update_Gallery_Categories_Translations_Input>>>;
+  images?: InputMaybe<Array<InputMaybe<CmsData_Update_Gallery_Categories_Files_Input>>>;
+  home?: InputMaybe<Array<InputMaybe<CmsData_Update_Home_Gallery_Categories_Input>>>;
+};
+
+export type CmsData_Update_Gallery_Categories_Translations_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  gallery_categories_id?: InputMaybe<CmsData_Update_Gallery_Categories_Input>;
+  languages_code?: InputMaybe<CmsData_Update_Languages_Input>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type CmsData_Update_Gallery_Categories_Files_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  gallery_categories_id?: InputMaybe<CmsData_Update_Gallery_Categories_Input>;
+  directus_files_id?: InputMaybe<CmsData_Update_Directus_Files_Input>;
+  sort?: InputMaybe<Scalars['Int']>;
+};
+
 export type CmsData_Update_Vocabulary_Input = {
   id?: InputMaybe<Scalars['ID']>;
   user_created?: InputMaybe<CmsData_Update_Directus_Users_Input>;
@@ -2123,6 +2507,18 @@ export type CmsData = {
   vocabulary_translations: Array<CmsData_Vocabulary_Translations>;
   vocabulary_translations_by_id?: Maybe<CmsData_Vocabulary_Translations>;
   vocabulary_translations_aggregated: Array<CmsData_Vocabulary_Translations_Aggregated>;
+  gallery_categories: Array<CmsData_Gallery_Categories>;
+  gallery_categories_by_id?: Maybe<CmsData_Gallery_Categories>;
+  gallery_categories_aggregated: Array<CmsData_Gallery_Categories_Aggregated>;
+  gallery_categories_translations: Array<CmsData_Gallery_Categories_Translations>;
+  gallery_categories_translations_by_id?: Maybe<CmsData_Gallery_Categories_Translations>;
+  gallery_categories_translations_aggregated: Array<CmsData_Gallery_Categories_Translations_Aggregated>;
+  gallery_categories_files: Array<CmsData_Gallery_Categories_Files>;
+  gallery_categories_files_by_id?: Maybe<CmsData_Gallery_Categories_Files>;
+  gallery_categories_files_aggregated: Array<CmsData_Gallery_Categories_Files_Aggregated>;
+  home_gallery_categories: Array<CmsData_Home_Gallery_Categories>;
+  home_gallery_categories_by_id?: Maybe<CmsData_Home_Gallery_Categories>;
+  home_gallery_categories_aggregated: Array<CmsData_Home_Gallery_Categories_Aggregated>;
 };
 
 
@@ -2360,6 +2756,102 @@ export type CmsDataVocabulary_Translations_By_IdArgs = {
 export type CmsDataVocabulary_Translations_AggregatedArgs = {
   groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   filter?: InputMaybe<CmsData_Vocabulary_Translations_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CmsDataGallery_CategoriesArgs = {
+  filter?: InputMaybe<CmsData_Gallery_Categories_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsDataGallery_Categories_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type CmsDataGallery_Categories_AggregatedArgs = {
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filter?: InputMaybe<CmsData_Gallery_Categories_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CmsDataGallery_Categories_TranslationsArgs = {
+  filter?: InputMaybe<CmsData_Gallery_Categories_Translations_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsDataGallery_Categories_Translations_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type CmsDataGallery_Categories_Translations_AggregatedArgs = {
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filter?: InputMaybe<CmsData_Gallery_Categories_Translations_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CmsDataGallery_Categories_FilesArgs = {
+  filter?: InputMaybe<CmsData_Gallery_Categories_Files_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsDataGallery_Categories_Files_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type CmsDataGallery_Categories_Files_AggregatedArgs = {
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filter?: InputMaybe<CmsData_Gallery_Categories_Files_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CmsDataHome_Gallery_CategoriesArgs = {
+  filter?: InputMaybe<CmsData_Home_Gallery_Categories_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsDataHome_Gallery_Categories_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type CmsDataHome_Gallery_Categories_AggregatedArgs = {
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filter?: InputMaybe<CmsData_Home_Gallery_Categories_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   search?: InputMaybe<Scalars['String']>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -4970,9 +5462,9 @@ export type GraphQlSourceSortInput = {
 export type CreatePagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CreatePagesQuery = { site?: { siteMetadata?: { title?: string | null, siteUrl?: string | null } | null } | null, cms: { languages: Array<{ code: string, prefix?: string | null }>, home?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, test_list?: any | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, video_file?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null, slides_list?: Array<{ slide_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null } };
+export type CreatePagesQuery = { site?: { siteMetadata?: { title?: string | null, siteUrl?: string | null } | null } | null, cms: { languages: Array<{ code: string, prefix?: string | null }>, home?: { id: string, categories_list?: Array<{ gallery_categories_id?: { images?: Array<{ directus_files_id?: { id: string, title?: string | null, file?: { childImageSharp?: { gatsbyImageData: any, thumbnails: any, original?: { width?: number | null, height?: number | null } | null } | null } | null } | null } | null> | null, translations?: Array<{ title: string, languages_code?: { code: string } | null } | null> | null } | null } | null> | null, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, test_list?: any | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, video_file?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null, slides_list?: Array<{ slide_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null } };
 
-export type HomeQueryFragment = { home?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, test_list?: any | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, video_file?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null, slides_list?: Array<{ slide_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null };
+export type HomeQueryFragment = { home?: { id: string, categories_list?: Array<{ gallery_categories_id?: { images?: Array<{ directus_files_id?: { id: string, title?: string | null, file?: { childImageSharp?: { gatsbyImageData: any, thumbnails: any, original?: { width?: number | null, height?: number | null } | null } | null } | null } | null } | null> | null, translations?: Array<{ title: string, languages_code?: { code: string } | null } | null> | null } | null } | null> | null, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, test_list?: any | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, video_file?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null, slides_list?: Array<{ slide_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null };
 
 export type VocabularyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

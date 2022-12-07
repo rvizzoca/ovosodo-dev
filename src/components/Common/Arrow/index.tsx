@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { ChevronLeft, ChevronRight } from 'app/components/Icons'
+/* import { ChevronLeft, ChevronRight } from 'app/components/Icons' */
 import { FlexBox } from 'app/components/Layout/FlexBox'
 import { theme } from 'app/theme'
 import { rgba } from 'emotion-rgba'
@@ -28,7 +28,7 @@ export const Arrow = memo(function Arrow({
       onClick={onClick}
       variant={variant}
     >
-      {direction === 'L' ? <ChevronLeft /> : <ChevronRight />}
+      {/* {direction === 'L' ? <ChevronLeft /> : <ChevronRight />} */}
     </Container>
   )
 })
@@ -36,7 +36,7 @@ export const Arrow = memo(function Arrow({
 const Container = styled(FlexBox)<ContainerProps>`
   width: 3.9375rem;
   height: 3.9375rem;
-  background: ${rgba(theme.colors.variants.neutralLight5, 0.1)};
+  background: ${rgba(theme.colors.variants.neutralDark1, 0.1)};
   border: 0.0625rem solid transparent;
   border-radius: 50%;
   cursor: pointer;
@@ -46,14 +46,14 @@ const Container = styled(FlexBox)<ContainerProps>`
   }
   &:hover {
     background: none;
-    border-color: ${rgba(theme.colors.variants.neutralLight5, 0.2)};
+    border-color: ${rgba(theme.colors.variants.neutralDark1, 0.2)};
   }
 
   svg {
     width: auto;
     height: 1rem;
     fill: none;
-    stroke: ${({ theme }) => theme.colors.variants.neutralLight5};
+    stroke: ${({ theme }) => theme.colors.variants.neutralDark1};
     stroke-width: 1;
     transition: 0.3s ease-in-out;
   }
@@ -62,12 +62,12 @@ const Container = styled(FlexBox)<ContainerProps>`
     switch (variant) {
       case 'full':
         return css`
-          background: ${theme.colors.variants.neutralLight5};
+          background: ${theme.colors.variants.neutralDark1};
           &:hover {
             background: ${theme.colors.variants.neutralDark2};
 
             svg {
-              stroke: ${theme.colors.variants.neutralLight5};
+              stroke: ${theme.colors.variants.neutralDark1};
             }
           }
 
@@ -77,7 +77,7 @@ const Container = styled(FlexBox)<ContainerProps>`
         `
       case 'banner':
         return css`
-          background: ${rgba(theme.colors.variants.neutralLight5, 0.3)};
+          background: ${rgba(theme.colors.variants.neutralDark1, 0.3)};
 
           svg {
             stroke: ${theme.colors.variants.neutralDark2};

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { CardsList } from 'app/components/CardsList'
+import { GalleryCategories } from 'app/components/GalleryCategories'
 import { ItemsList } from 'app/components/ItemsList'
 import { Slider } from 'app/components/Slider'
 import { VideoPlayer } from 'app/components/VideoPlayer'
@@ -34,6 +35,9 @@ export default memo(function HomePageTemplate({
       {context.sliderProps ? <Slider {...context.sliderProps} /> : null}
       {context.itemsListProps ? (
         <ItemsList {...context.itemsListProps} />
+      ) : null}
+      {context.galleryCategoriesProps ? (
+        <GalleryCategories {...context.galleryCategoriesProps} />
       ) : null}
     </Container>
   )
