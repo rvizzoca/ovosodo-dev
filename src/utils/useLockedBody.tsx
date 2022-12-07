@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
-
-import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect'
+import { useEffect, useLayoutEffect, useState } from 'react'
 
 type ReturnType = [boolean, (locked: boolean) => void]
 
 function useLockedBody(initialLocked = false): ReturnType {
   const [locked, setLocked] = useState(initialLocked)
+
+  const useIsomorphicLayoutEffect =
+    typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
   // Do the side effect before render
   useIsomorphicLayoutEffect(() => {

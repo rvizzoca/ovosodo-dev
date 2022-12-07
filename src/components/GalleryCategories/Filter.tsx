@@ -32,7 +32,7 @@ export const Filter = memo(function Filter({
 const Container = styled.div`
   color: ${({ theme }) => theme.colors.variants.neutralDark2};
   cursor: pointer;
-  font-family: ${({ theme }) => theme.fontFamily.paragraph};
+  font-family: ${({ theme }) => theme.fontFamily.default};
   font-size: 1rem;
   letter-spacing: 0.1rem;
   line-height: 1.25rem;

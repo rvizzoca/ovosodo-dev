@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { ArrowRight } from 'app/components/Icons'
 import { FlexBox } from 'app/components/Layout/FlexBox'
 import useLockedBody from 'app/utils/useLockedBody'
 import { useVocabularyData } from 'app/utils/vocabulary'
@@ -58,7 +57,7 @@ const Laptop = styled.div`
   max-width: 41.875rem;
   max-height: 24rem;
   aspect-ratio: 670/384;
-  background-image: url('./laptop-video-black.png');
+  background-image: url('laptop-video-black.png');
   background-size: contain;
   background-repeat: no-repeat;
   padding: 0.9375rem 5.3125rem;

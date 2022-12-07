@@ -23,15 +23,7 @@ export interface Props {
   title?: string
 }
 
-export const Slider = memo(function Slider({
-  cta,
-  description,
-  slides,
-  label,
-  pax,
-  size,
-  title,
-}: Props) {
+export const Slider = memo(function Slider({ slides }: Props) {
   const [sliderRef, instanceRef] = useKeenSlider(
     {
       slideChanged() {

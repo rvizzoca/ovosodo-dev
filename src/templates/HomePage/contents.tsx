@@ -10,10 +10,10 @@ import { PageContext } from '.'
 
 export interface Props {
   cardsListProps: CardsListProps | undefined
-  sliderProps: SliderProps | undefined
-  videoPlayerProps: VideoPlayerProps | undefined
   itemsListProps: ItemsListProps | undefined
   galleryCategoriesProps: GalleryCategoriesProps | undefined
+  sliderProps: SliderProps | undefined
+  videoPlayerProps: VideoPlayerProps | undefined
 }
 
 export const getHomePageProps = (
@@ -21,12 +21,36 @@ export const getHomePageProps = (
   pageContext: PageContext,
 ): Props => {
   return {
+    videoPlayerProps: getVideoPlayerProps(query, pageContext),
     cardsListProps: getCardsListProps(query, pageContext),
     sliderProps: getSliderProps(query, pageContext),
-    videoPlayerProps: getVideoPlayerProps(query, pageContext),
     itemsListProps: getItemsListProps(query, pageContext),
     galleryCategoriesProps: getGalleryCategoriesProps(query, pageContext),
   }
+}
+
+const getVideoPlayerProps = (
+  query: CreatePagesQuery,
+  pageContext: PageContext,
+): VideoPlayerProps | undefined => {
+  const home = query.cms?.home
+
+  if (!home) {
+    return undefined
+  }
+
+  const translation = home.translations?.find(
+    (t: any) => t?.languages_id?.code === pageContext.languageCode,
+  )
+
+  const video = translation?.video_file?.file?.publicURL
+
+  return video
+    ? {
+        languageCode: pageContext.languageCode,
+        video,
+      }
+    : undefined
 }
 
 const getCardsListProps = (
@@ -113,30 +137,6 @@ const getSliderProps = (
   return {
     slides,
   }
-}
-
-const getVideoPlayerProps = (
-  query: CreatePagesQuery,
-  pageContext: PageContext,
-): VideoPlayerProps | undefined => {
-  const home = query.cms?.home
-
-  if (!home) {
-    return undefined
-  }
-
-  const translation = home.translations?.find(
-    (t: any) => t?.languages_id?.code === pageContext.languageCode,
-  )
-
-  const video = translation?.video_file?.file?.publicURL
-
-  return video
-    ? {
-        languageCode: pageContext.languageCode,
-        video,
-      }
-    : undefined
 }
 
 const getItemsListProps = (
