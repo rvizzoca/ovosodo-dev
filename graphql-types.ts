@@ -1616,6 +1616,141 @@ export type CmsData_Home_Translations_Aggregated_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+export type CmsData_Vocabulary = {
+  id: Scalars['ID'];
+  user_created?: Maybe<CmsData_Directus_Users>;
+  date_created?: Maybe<Scalars['CMSData_Date']>;
+  date_created_func?: Maybe<CmsData_Datetime_Functions>;
+  user_updated?: Maybe<CmsData_Directus_Users>;
+  date_updated?: Maybe<Scalars['CMSData_Date']>;
+  date_updated_func?: Maybe<CmsData_Datetime_Functions>;
+  code: Scalars['String'];
+  translations?: Maybe<Array<Maybe<CmsData_Vocabulary_Translations>>>;
+  translations_func?: Maybe<CmsData_Count_Functions>;
+};
+
+
+export type CmsData_VocabularyUser_CreatedArgs = {
+  filter?: InputMaybe<CmsData_Directus_Users_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_VocabularyUser_UpdatedArgs = {
+  filter?: InputMaybe<CmsData_Directus_Users_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_VocabularyTranslationsArgs = {
+  filter?: InputMaybe<CmsData_Vocabulary_Translations_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+export type CmsData_Vocabulary_Translations = {
+  id: Scalars['ID'];
+  vocabulary_id?: Maybe<CmsData_Vocabulary>;
+  languages_code?: Maybe<CmsData_Languages>;
+  label: Scalars['String'];
+};
+
+
+export type CmsData_Vocabulary_TranslationsVocabulary_IdArgs = {
+  filter?: InputMaybe<CmsData_Vocabulary_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsData_Vocabulary_TranslationsLanguages_CodeArgs = {
+  filter?: InputMaybe<CmsData_Languages_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+export type CmsData_Vocabulary_Filter = {
+  id?: InputMaybe<CmsData_String_Filter_Operators>;
+  user_created?: InputMaybe<CmsData_Directus_Users_Filter>;
+  date_created?: InputMaybe<CmsData_Date_Filter_Operators>;
+  date_created_func?: InputMaybe<CmsData_Datetime_Function_Filter_Operators>;
+  user_updated?: InputMaybe<CmsData_Directus_Users_Filter>;
+  date_updated?: InputMaybe<CmsData_Date_Filter_Operators>;
+  date_updated_func?: InputMaybe<CmsData_Datetime_Function_Filter_Operators>;
+  code?: InputMaybe<CmsData_String_Filter_Operators>;
+  translations?: InputMaybe<CmsData_Vocabulary_Translations_Filter>;
+  translations_func?: InputMaybe<CmsData_Count_Function_Filter_Operators>;
+  _and?: InputMaybe<Array<InputMaybe<CmsData_Vocabulary_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<CmsData_Vocabulary_Filter>>>;
+};
+
+export type CmsData_Vocabulary_Translations_Filter = {
+  id?: InputMaybe<CmsData_Number_Filter_Operators>;
+  vocabulary_id?: InputMaybe<CmsData_Vocabulary_Filter>;
+  languages_code?: InputMaybe<CmsData_Languages_Filter>;
+  label?: InputMaybe<CmsData_String_Filter_Operators>;
+  _and?: InputMaybe<Array<InputMaybe<CmsData_Vocabulary_Translations_Filter>>>;
+  _or?: InputMaybe<Array<InputMaybe<CmsData_Vocabulary_Translations_Filter>>>;
+};
+
+export type CmsData_Vocabulary_Aggregated = {
+  group?: Maybe<Scalars['CMSData_JSON']>;
+  countAll?: Maybe<Scalars['Int']>;
+  count?: Maybe<CmsData_Vocabulary_Aggregated_Count>;
+  countDistinct?: Maybe<CmsData_Vocabulary_Aggregated_Count>;
+};
+
+export type CmsData_Vocabulary_Aggregated_Count = {
+  id?: Maybe<Scalars['Int']>;
+  user_created?: Maybe<Scalars['Int']>;
+  date_created?: Maybe<Scalars['Int']>;
+  user_updated?: Maybe<Scalars['Int']>;
+  date_updated?: Maybe<Scalars['Int']>;
+  code?: Maybe<Scalars['Int']>;
+  translations?: Maybe<Scalars['Int']>;
+};
+
+export type CmsData_Vocabulary_Translations_Aggregated = {
+  group?: Maybe<Scalars['CMSData_JSON']>;
+  countAll?: Maybe<Scalars['Int']>;
+  count?: Maybe<CmsData_Vocabulary_Translations_Aggregated_Count>;
+  countDistinct?: Maybe<CmsData_Vocabulary_Translations_Aggregated_Count>;
+  avg?: Maybe<CmsData_Vocabulary_Translations_Aggregated_Fields>;
+  sum?: Maybe<CmsData_Vocabulary_Translations_Aggregated_Fields>;
+  avgDistinct?: Maybe<CmsData_Vocabulary_Translations_Aggregated_Fields>;
+  sumDistinct?: Maybe<CmsData_Vocabulary_Translations_Aggregated_Fields>;
+  min?: Maybe<CmsData_Vocabulary_Translations_Aggregated_Fields>;
+  max?: Maybe<CmsData_Vocabulary_Translations_Aggregated_Fields>;
+};
+
+export type CmsData_Vocabulary_Translations_Aggregated_Count = {
+  id?: Maybe<Scalars['Int']>;
+  vocabulary_id?: Maybe<Scalars['Int']>;
+  languages_code?: Maybe<Scalars['Int']>;
+  label?: Maybe<Scalars['Int']>;
+};
+
+export type CmsData_Vocabulary_Translations_Aggregated_Fields = {
+  id?: Maybe<Scalars['Float']>;
+};
+
 export type CmsData_Create_Languages_Input = {
   code: Scalars['ID'];
   name?: InputMaybe<Scalars['String']>;
@@ -1763,6 +1898,23 @@ export type CmsData_Create_Slide_Translations_Input = {
   slide_id?: InputMaybe<CmsData_Create_Slide_Input>;
   languages_code?: InputMaybe<CmsData_Create_Languages_Input>;
   title?: InputMaybe<Scalars['String']>;
+};
+
+export type CmsData_Create_Vocabulary_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  user_created?: InputMaybe<CmsData_Create_Directus_Users_Input>;
+  date_created?: InputMaybe<Scalars['CMSData_Date']>;
+  user_updated?: InputMaybe<CmsData_Create_Directus_Users_Input>;
+  date_updated?: InputMaybe<Scalars['CMSData_Date']>;
+  code: Scalars['String'];
+  translations?: InputMaybe<Array<InputMaybe<CmsData_Create_Vocabulary_Translations_Input>>>;
+};
+
+export type CmsData_Create_Vocabulary_Translations_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  vocabulary_id?: InputMaybe<CmsData_Create_Vocabulary_Input>;
+  languages_code?: InputMaybe<CmsData_Create_Languages_Input>;
+  label: Scalars['String'];
 };
 
 export type CmsData_Update_Home_Input = {
@@ -1914,6 +2066,23 @@ export type CmsData_Update_Slide_Translations_Input = {
   title?: InputMaybe<Scalars['String']>;
 };
 
+export type CmsData_Update_Vocabulary_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  user_created?: InputMaybe<CmsData_Update_Directus_Users_Input>;
+  date_created?: InputMaybe<Scalars['CMSData_Date']>;
+  user_updated?: InputMaybe<CmsData_Update_Directus_Users_Input>;
+  date_updated?: InputMaybe<Scalars['CMSData_Date']>;
+  code?: InputMaybe<Scalars['String']>;
+  translations?: InputMaybe<Array<InputMaybe<CmsData_Update_Vocabulary_Translations_Input>>>;
+};
+
+export type CmsData_Update_Vocabulary_Translations_Input = {
+  id?: InputMaybe<Scalars['ID']>;
+  vocabulary_id?: InputMaybe<CmsData_Update_Vocabulary_Input>;
+  languages_code?: InputMaybe<CmsData_Update_Languages_Input>;
+  label?: InputMaybe<Scalars['String']>;
+};
+
 export type CmsData_Delete_Many = {
   ids: Array<Maybe<Scalars['ID']>>;
 };
@@ -1948,6 +2117,12 @@ export type CmsData = {
   home_translations: Array<CmsData_Home_Translations>;
   home_translations_by_id?: Maybe<CmsData_Home_Translations>;
   home_translations_aggregated: Array<CmsData_Home_Translations_Aggregated>;
+  vocabulary: Array<CmsData_Vocabulary>;
+  vocabulary_by_id?: Maybe<CmsData_Vocabulary>;
+  vocabulary_aggregated: Array<CmsData_Vocabulary_Aggregated>;
+  vocabulary_translations: Array<CmsData_Vocabulary_Translations>;
+  vocabulary_translations_by_id?: Maybe<CmsData_Vocabulary_Translations>;
+  vocabulary_translations_aggregated: Array<CmsData_Vocabulary_Translations_Aggregated>;
 };
 
 
@@ -2137,6 +2312,54 @@ export type CmsDataHome_Translations_By_IdArgs = {
 export type CmsDataHome_Translations_AggregatedArgs = {
   groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   filter?: InputMaybe<CmsData_Home_Translations_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CmsDataVocabularyArgs = {
+  filter?: InputMaybe<CmsData_Vocabulary_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsDataVocabulary_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type CmsDataVocabulary_AggregatedArgs = {
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filter?: InputMaybe<CmsData_Vocabulary_Filter>;
+  limit?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CmsDataVocabulary_TranslationsArgs = {
+  filter?: InputMaybe<CmsData_Vocabulary_Translations_Filter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type CmsDataVocabulary_Translations_By_IdArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type CmsDataVocabulary_Translations_AggregatedArgs = {
+  groupBy?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filter?: InputMaybe<CmsData_Vocabulary_Translations_Filter>;
   limit?: InputMaybe<Scalars['Int']>;
   search?: InputMaybe<Scalars['String']>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -4750,3 +4973,8 @@ export type CreatePagesQueryVariables = Exact<{ [key: string]: never; }>;
 export type CreatePagesQuery = { site?: { siteMetadata?: { title?: string | null, siteUrl?: string | null } | null } | null, cms: { languages: Array<{ code: string, prefix?: string | null }>, home?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, test_list?: any | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, video_file?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null, slides_list?: Array<{ slide_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null } };
 
 export type HomeQueryFragment = { home?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, test_list?: any | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, video_file?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null, slides_list?: Array<{ slide_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null };
+
+export type VocabularyQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type VocabularyQueryQuery = { cms: { vocabulary: Array<{ code: string, translations?: Array<{ label: string, languages_code?: { code: string, prefix?: string | null } | null } | null> | null }> } };

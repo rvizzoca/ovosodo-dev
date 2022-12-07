@@ -1,26 +1,39 @@
 import styled from '@emotion/styled'
 import { FlexBox } from 'app/components/Layout/FlexBox'
+import useLockedBody from 'app/utils/useLockedBody'
+import { useVocabularyData } from 'app/utils/vocabulary'
 import React, { memo, useState } from 'react'
 
 export interface Props {
+  languageCode: string
   video: string
 }
 
-export const VideoPlayer = memo(function VideoPlayer({ video }: Props) {
-  const [videoPlayback, setvideoPlayback] = useState(false)
+export const VideoPlayer = memo(function VideoPlayer({
+  languageCode,
+  video,
+}: Props) {
+  const [_locked, setLocked] = useLockedBody()
+  const [videoPlayback, setVideoPlayback] = useState(false)
 
   return (
     <Container row dial={5}>
+      {useVocabularyData('book', languageCode)}
+
       <Laptop>
         <Video
           src={video}
           onClick={(e: any) => {
             if (videoPlayback) {
               e.target.pause()
-              setvideoPlayback(false)
+              setVideoPlayback(false)
+
+              setLocked(false)
             } else {
               e.target.play()
-              setvideoPlayback(true)
+              setVideoPlayback(true)
+
+              setLocked(true)
             }
           }}
         />

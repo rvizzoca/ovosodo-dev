@@ -57,6 +57,7 @@ const Wrapper = styled.div`
 const Container = styled(FlexBox)`
   padding-bottom: 5rem;
 `
+
 const StyledAccordion = styled(Accordion)`
   width: 100%;
 `

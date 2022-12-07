@@ -130,6 +130,7 @@ const getVideoPlayerProps = (
 
   return video
     ? {
+        languageCode: pageContext.languageCode,
         video,
       }
     : undefined
