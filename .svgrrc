@@ -1,0 +1,7 @@
+{
+  "icon": true,
+  "expandProps": false,
+  "ignoreExisting": true,
+  "memo": true,
+  "typescript": true
+}

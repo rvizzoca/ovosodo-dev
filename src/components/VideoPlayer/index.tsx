@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { ArrowRight } from 'app/components/Icons'
 import { FlexBox } from 'app/components/Layout/FlexBox'
 import useLockedBody from 'app/utils/useLockedBody'
 import { useVocabularyData } from 'app/utils/vocabulary'

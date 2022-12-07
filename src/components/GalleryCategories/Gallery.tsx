@@ -115,12 +115,10 @@ export const Gallery = memo(function Gallery({
           <Arrows row space="between">
             <Arrow
               onClick={(e) => e.stopPropagation() || galleryRef.current?.prev()}
-              variant="full"
             />
             <Arrow
               direction="R"
               onClick={(e) => e.stopPropagation() || galleryRef.current?.next()}
-              variant="full"
             />
           </Arrows>
 

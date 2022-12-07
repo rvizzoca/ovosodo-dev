@@ -9,7 +9,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "server-preview": "gatsby develop -H 0.0.0.0"
+    "server-preview": "gatsby develop -H 0.0.0.0",
+    "icons-generator": "npx @svgr/cli -d src/components/Icons src/images/svg"
   },
   "browserslist": [
     ">0.25%",
@@ -53,6 +54,7 @@
     "react-refresh-webpack-plugin": "^0.1.0"
   },
   "devDependencies": {
+    "@svgr/cli": "^6.5.1",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
     "dotenv": "^16.0.3",
