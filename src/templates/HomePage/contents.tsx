@@ -1,6 +1,7 @@
 import { Props as CardsListProps } from 'app/components/CardsList'
 import { Props as ItemsListProps } from 'app/components/ItemsList'
 import { Props as SliderProps } from 'app/components/Slider'
+import { Props as VideoPlayerProps } from 'app/components/VideoPlayer'
 import { CreatePagesQuery } from 'graphql-types'
 import { compact } from 'lodash'
 
@@ -8,26 +9,20 @@ import { PageContext } from '.'
 
 export interface Props {
   cardsListProps: CardsListProps | undefined
-  itemsListProps: ItemsListProps | undefined
   sliderProps: SliderProps | undefined
-  video: string | undefined
+  videoPlayerProps: VideoPlayerProps | undefined
+  itemsListProps: ItemsListProps | undefined
 }
 
 export const getHomePageProps = (
   query: CreatePagesQuery,
   pageContext: PageContext,
 ): Props => {
-  const home = query.cms?.home
-
-  const translation = home?.translations?.find(
-    (t: any) => t?.languages_id?.code === pageContext.languageCode,
-  )
-
   return {
     cardsListProps: getCardsListProps(query, pageContext),
-    itemsListProps: translation?.test_list || undefined,
     sliderProps: getSliderProps(query, pageContext),
-    video: translation?.video_file?.file?.publicURL || undefined,
+    videoPlayerProps: getVideoPlayerProps(query, pageContext),
+    itemsListProps: getItemsListProps(query, pageContext),
   }
 }
 
@@ -114,5 +109,49 @@ const getSliderProps = (
 
   return {
     slides,
+  }
+}
+
+const getVideoPlayerProps = (
+  query: CreatePagesQuery,
+  pageContext: PageContext,
+): VideoPlayerProps | undefined => {
+  const home = query.cms?.home
+
+  if (!home) {
+    return undefined
+  }
+
+  const translation = home.translations?.find(
+    (t: any) => t?.languages_id?.code === pageContext.languageCode,
+  )
+
+  const video = translation?.video_file?.file?.publicURL
+
+  return video
+    ? {
+        video,
+      }
+    : undefined
+}
+
+const getItemsListProps = (
+  query: CreatePagesQuery,
+  pageContext: PageContext,
+): ItemsListProps | undefined => {
+  const home = query.cms?.home
+
+  if (!home) {
+    return undefined
+  }
+
+  const translation = home.translations?.find(
+    (t: any) => t?.languages_id?.code === pageContext.languageCode,
+  )
+
+  const items = translation?.test_list || undefined
+
+  return {
+    items,
   }
 }

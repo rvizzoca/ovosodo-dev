@@ -12,7 +12,6 @@ export const homeFragments = graphql`
         }
         metatag_title
         metatag_description
-        test_list
         video_file {
           id
           filename_download
@@ -60,6 +59,7 @@ export const homeFragments = graphql`
             }
           }
         }
+        test_list
       }
     }
   }

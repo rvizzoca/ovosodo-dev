@@ -25,12 +25,16 @@ export default memo(function HomePageTemplate({
 
   return (
     <Container>
-      {context.video ? <VideoPlayer video={context.video} /> : null}
-      {context.listItems ? <ItemsList {...context.listItems} /> : null}
+      {context.videoPlayerProps ? (
+        <VideoPlayer {...context.videoPlayerProps} />
+      ) : null}
       {context.cardsListProps ? (
         <CardsList {...context.cardsListProps} />
       ) : null}
       {context.sliderProps ? <Slider {...context.sliderProps} /> : null}
+      {context.itemsListProps ? (
+        <ItemsList {...context.itemsListProps} />
+      ) : null}
     </Container>
   )
 })

@@ -11,13 +11,8 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 
-interface ItemProps {
-  title?: string
-  text?: string
-}
-
 export interface Props {
-  items?: ItemProps[]
+  items?: string[]
 }
 
 export const ItemsList = memo(function ItemsList({ items }: Props) {
@@ -26,7 +21,7 @@ export const ItemsList = memo(function ItemsList({ items }: Props) {
       <Container row dial={5}>
         {items ? (
           <StyledAccordion allowZeroExpanded>
-            {items.map((item, index) => (
+            {items.map((item: any, index) => (
               <AccordionItem key={index}>
                 <AccordionItemHeading>
                   {item.title ? (
@@ -46,16 +41,16 @@ export const ItemsList = memo(function ItemsList({ items }: Props) {
 })
 
 const Wrapper = styled.div`
-  max-width: 1250px;
+  max-width: 78.125rem;
   margin-left: auto;
   margin-right: auto;
 
-  @media screen and (max-width: 1310px) {
-    max-width: calc(100% - 60px);
+  @media screen and (max-width: 81.875rem) {
+    max-width: calc(100% - 3.75rem);
   }
 
-  @media screen and (max-width: 768px) {
-    max-width: calc(100% - 40px);
+  @media screen and (max-width: 48rem) {
+    max-width: calc(100% - 2.5rem);
   }
 `
 

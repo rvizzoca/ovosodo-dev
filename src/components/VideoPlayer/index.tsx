@@ -26,7 +26,7 @@ export const VideoPlayer = memo(function VideoPlayer({ video }: Props) {
         />
         <PlayButton
           className={videoPlayback ? 'hidden' : undefined}
-          src="./play_button.svg"
+          src="play_button.svg"
         />
       </Laptop>
     </Container>
