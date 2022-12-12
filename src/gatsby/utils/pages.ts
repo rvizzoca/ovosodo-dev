@@ -95,3 +95,52 @@ export const getRoomsPages = (
     },
   }))
 }
+
+/* export const getRoomsPages = (
+  data: CreatePagesQuery,
+): Page<RoomsPageContext>[] => {
+  const translations =
+    data.cms.rooms?.status === 'published'
+      ? compact(data.cms.rooms?.translations)
+          .filter(
+            (
+              x,
+            ): x is {
+              languages_code: {
+                code: string
+                prefix: string | null
+                sort: number | null
+              }
+              title: string
+              slug: string
+              metatag_title: string
+              metatag_description: string
+            } => {
+              const { languages_code, slug } = x
+
+              return Boolean(
+                languages_code &&
+                  languages_code.code &&
+                  languages_code.prefix !== undefined &&
+                  languages_code.sort !== undefined &&
+                  slug,
+              )
+            },
+          )
+          .map(({ languages_code, slug }) => ({
+            language: languages_code,
+            slug,
+          }))
+      : []
+
+  return translations.map(({ language, slug }) => ({
+    path: `${language.prefix ? `/${language.prefix}` : ''}/${slug}`,
+    component: ROOMS_PAGE_TEMPLATE,
+    context: {
+      id: data.cms.rooms?.id || '',
+      languageCode: language.code,
+      languagePrefix: language.prefix,
+      sort: language.sort,
+    },
+  }))
+} */

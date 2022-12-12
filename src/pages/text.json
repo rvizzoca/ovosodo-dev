@@ -1,0 +1,16 @@
+{
+  "en": {
+    "code": "en-US",
+    "pageTitle": "Maintenance Page",
+    "prefix": "en",
+    "title": "Page Not Found",
+    "text": "Oops, we couldn't find this page!"
+  },
+  "it": {
+    "code": "it-IT",
+    "pageTitle": "Sito in manutenzione",
+    "prefix": "",
+    "title": "Pagina non trovata",
+    "text": "Spiacenti, non siamo riusciti a trovare questa pagina!"
+  }
+}
