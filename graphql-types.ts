@@ -68,7 +68,6 @@ export type File = Node & {
   birthtimeMs?: Maybe<Scalars['Float']>;
   blksize?: Maybe<Scalars['Int']>;
   blocks?: Maybe<Scalars['Int']>;
-  url?: Maybe<Scalars['String']>;
   /** Copy file to static directory and return public url to it */
   publicURL?: Maybe<Scalars['String']>;
   /** Returns all children nodes filtered by type ImageSharp */
@@ -2101,6 +2100,8 @@ export type CmsData_Rooms_Translations = {
   languages_code?: Maybe<CmsData_Languages>;
   metatag_title?: Maybe<Scalars['String']>;
   metatag_description?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
   services_list?: Maybe<Array<Maybe<CmsData_Rooms_Translations_Service>>>;
   services_list_func?: Maybe<CmsData_Count_Functions>;
 };
@@ -2152,6 +2153,8 @@ export type CmsData_Rooms_Translations_Filter = {
   languages_code?: InputMaybe<CmsData_Languages_Filter>;
   metatag_title?: InputMaybe<CmsData_String_Filter_Operators>;
   metatag_description?: InputMaybe<CmsData_String_Filter_Operators>;
+  title?: InputMaybe<CmsData_String_Filter_Operators>;
+  slug?: InputMaybe<CmsData_String_Filter_Operators>;
   services_list?: InputMaybe<CmsData_Rooms_Translations_Service_Filter>;
   services_list_func?: InputMaybe<CmsData_Count_Function_Filter_Operators>;
   _and?: InputMaybe<Array<InputMaybe<CmsData_Rooms_Translations_Filter>>>;
@@ -2337,6 +2340,8 @@ export type CmsData_Rooms_Translations_Aggregated_Count = {
   languages_code?: Maybe<Scalars['Int']>;
   metatag_title?: Maybe<Scalars['Int']>;
   metatag_description?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['Int']>;
+  slug?: Maybe<Scalars['Int']>;
   services_list?: Maybe<Scalars['Int']>;
 };
 
@@ -2636,6 +2641,8 @@ export type CmsData_Create_Rooms_Translations_Input = {
   languages_code?: InputMaybe<CmsData_Create_Languages_Input>;
   metatag_title?: InputMaybe<Scalars['String']>;
   metatag_description?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+  slug?: InputMaybe<Scalars['String']>;
   services_list?: InputMaybe<Array<InputMaybe<CmsData_Create_Rooms_Translations_Service_Input>>>;
 };
 
@@ -2888,6 +2895,8 @@ export type CmsData_Update_Rooms_Translations_Input = {
   languages_code?: InputMaybe<CmsData_Update_Languages_Input>;
   metatag_title?: InputMaybe<Scalars['String']>;
   metatag_description?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+  slug?: InputMaybe<Scalars['String']>;
   services_list?: InputMaybe<Array<InputMaybe<CmsData_Update_Rooms_Translations_Service_Input>>>;
 };
 
@@ -3475,7 +3484,6 @@ export type QueryFileArgs = {
   birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
   blksize?: InputMaybe<IntQueryOperatorInput>;
   blocks?: InputMaybe<IntQueryOperatorInput>;
-  url?: InputMaybe<StringQueryOperatorInput>;
   publicURL?: InputMaybe<StringQueryOperatorInput>;
   childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
   childImageSharp?: InputMaybe<ImageSharpFilterInput>;
@@ -3919,7 +3927,6 @@ export type FileFieldsEnum =
   | 'birthtimeMs'
   | 'blksize'
   | 'blocks'
-  | 'url'
   | 'publicURL'
   | 'childrenImageSharp'
   | 'childrenImageSharp___fixed___base64'
@@ -4237,7 +4244,6 @@ export type FileFilterInput = {
   birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
   blksize?: InputMaybe<IntQueryOperatorInput>;
   blocks?: InputMaybe<IntQueryOperatorInput>;
-  url?: InputMaybe<StringQueryOperatorInput>;
   publicURL?: InputMaybe<StringQueryOperatorInput>;
   childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
   childImageSharp?: InputMaybe<ImageSharpFilterInput>;
@@ -6026,11 +6032,11 @@ export type GraphQlSourceSortInput = {
 export type CreatePagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CreatePagesQuery = { site?: { siteMetadata?: { title?: string | null, siteUrl?: string | null } | null } | null, cms: { languages: Array<{ code: string, prefix?: string | null }>, home?: { id: string, categories_list?: Array<{ gallery_categories_id?: { images?: Array<{ directus_files_id?: { id: string, title?: string | null, file?: { childImageSharp?: { gatsbyImageData: any, thumbnails: any, original?: { width?: number | null, height?: number | null } | null } | null } | null } | null } | null> | null, translations?: Array<{ title: string, languages_code?: { code: string } | null } | null> | null } | null } | null> | null, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, test_list?: any | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, video_file?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null, slides_list?: Array<{ slide_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null, rooms?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, languages_code?: { code: string, prefix?: string | null, sort?: number | null } | null, services_list?: Array<{ service_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, description?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null } };
+export type CreatePagesQuery = { site?: { siteMetadata?: { title?: string | null, siteUrl?: string | null } | null } | null, cms: { languages: Array<{ code: string, prefix?: string | null }>, home?: { id: string, categories_list?: Array<{ gallery_categories_id?: { images?: Array<{ directus_files_id?: { id: string, title?: string | null, file?: { childImageSharp?: { gatsbyImageData: any, thumbnails: any, original?: { width?: number | null, height?: number | null } | null } | null } | null } | null } | null> | null, translations?: Array<{ title: string, languages_code?: { code: string } | null } | null> | null } | null } | null> | null, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, test_list?: any | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, video_file?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null, slides_list?: Array<{ slide_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null, rooms?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, title?: string | null, slug?: string | null, languages_code?: { code: string, prefix?: string | null, sort?: number | null } | null, services_list?: Array<{ service_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, description?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null } };
 
 export type HomeQueryFragment = { home?: { id: string, categories_list?: Array<{ gallery_categories_id?: { images?: Array<{ directus_files_id?: { id: string, title?: string | null, file?: { childImageSharp?: { gatsbyImageData: any, thumbnails: any, original?: { width?: number | null, height?: number | null } | null } | null } | null } | null } | null> | null, translations?: Array<{ title: string, languages_code?: { code: string } | null } | null> | null } | null } | null> | null, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, test_list?: any | null, languages_id?: { code: string, prefix?: string | null, sort?: number | null } | null, video_file?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, cards_list?: Array<{ card_id?: { icon?: { id: string, filename_download: string, file?: { publicURL?: string | null } | null } | null, translations?: Array<{ description?: string | null, title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null, slides_list?: Array<{ slide_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null };
 
-export type RoomsQueryFragment = { rooms?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, languages_code?: { code: string, prefix?: string | null, sort?: number | null } | null, services_list?: Array<{ service_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, description?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null };
+export type RoomsQueryFragment = { rooms?: { id: string, translations?: Array<{ metatag_title?: string | null, metatag_description?: string | null, title?: string | null, slug?: string | null, languages_code?: { code: string, prefix?: string | null, sort?: number | null } | null, services_list?: Array<{ service_id?: { image?: { id: string, title?: string | null, filename_download: string, file?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, translations?: Array<{ title?: string | null, description?: string | null, languages_code?: { code: string, prefix?: string | null } | null } | null> | null } | null } | null> | null } | null> | null } | null };
 
 export type VocabularyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

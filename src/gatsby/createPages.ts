@@ -64,7 +64,6 @@ export const createPages = async ({
       )
     }
   })
-
   roomsPages.forEach((page) => {
     if (page.context) {
       const props = getRoomsPageProps(data, page.context)

@@ -28,7 +28,7 @@ const getServicesProps = (
   }
 
   const translation = rooms.translations?.find(
-    (t: any) => t?.languages_id?.code === pageContext.languageCode,
+    (t: any) => t?.languages_code?.code === pageContext.languageCode,
   )
 
   const services = compact(

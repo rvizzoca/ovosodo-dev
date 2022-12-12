@@ -12,6 +12,8 @@ export const roomsFragments = graphql`
         }
         metatag_title
         metatag_description
+        title
+        slug
         services_list {
           service_id {
             image {

@@ -63,25 +63,29 @@ export const getRoomsPages = (
           prefix: string | null
           sort: number | null
         }
+        title: string
+        slug: string
         metatag_title: string
         metatag_description: string
       } => {
-        const { languages_code } = x
+        const { languages_code, slug } = x
 
         return Boolean(
           languages_code &&
             languages_code.code &&
             languages_code.prefix !== undefined &&
-            languages_code.sort !== undefined,
+            languages_code.sort !== undefined &&
+            slug,
         )
       },
     )
-    .map(({ languages_code }) => ({
+    .map(({ languages_code, slug }) => ({
       language: languages_code,
+      slug,
     }))
 
-  return translations.map(({ language }) => ({
-    path: `${language.prefix ? `/${language.prefix}` : ''}/rooms`,
+  return translations.map(({ language, slug }) => ({
+    path: `${language.prefix ? `/${language.prefix}` : ''}/${slug}`,
     component: ROOMS_PAGE_TEMPLATE,
     context: {
       id: data.cms.rooms?.id || '',

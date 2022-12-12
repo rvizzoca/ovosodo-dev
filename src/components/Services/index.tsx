@@ -16,7 +16,13 @@ export interface Props {
 }
 
 export const Services = memo(function Services({ services }: Props) {
-  console.log(services)
+  if (!services) {
+    return null
+  }
+
+  if (services.length < 1) {
+    return null
+  }
 
   return (
     <Wrapper>
