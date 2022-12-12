@@ -8,6 +8,7 @@ import {
   StructuredData,
 } from 'app/components/StructuredData'
 import { VideoPlayer } from 'app/components/VideoPlayer'
+import { Zigzags } from 'app/components/Zigzags'
 import { Footer, Props as FooterProps } from 'app/containers/Footer'
 import { Header, Props as HeaderProps } from 'app/containers/Header'
 import { PageProps } from 'gatsby'
@@ -28,6 +29,31 @@ export interface Context extends PageContext {
   props: Props
 }
 
+const zigzagProps = [
+  {
+    label: 'Mediterranean sea',
+    title: '<strong>Montenapo</strong><br>Sea luxury experience',
+    description:
+      'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
+    cta: {
+      label: 'Scoprite',
+      URL: '#',
+    },
+    image: { src: 'boat.jpeg' },
+  },
+  {
+    label: 'La storia',
+    title: '<strong>Una famiglia</strong><br>italiana',
+    description:
+      'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
+    cta: {
+      label: 'Chi siamo',
+      URL: '#',
+    },
+    image: { src: 'boat.jpeg' },
+  },
+]
+
 export default memo(function HomePageTemplate({
   pageContext,
 }: PageProps<void, Context>) {
@@ -43,6 +69,7 @@ export default memo(function HomePageTemplate({
           {...context.headerProps}
         />
       ) : null} */}
+      {zigzagProps ? <Zigzags zigzags={zigzagProps} /> : null}
       {context.videoPlayerProps ? (
         <VideoPlayer {...context.videoPlayerProps} />
       ) : null}
