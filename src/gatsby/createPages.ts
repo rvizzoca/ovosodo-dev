@@ -5,6 +5,9 @@ import { CreatePagesQuery } from 'graphql-types'
 import path from 'path'
 
 import { collectGQLQueries } from '../gatsby/collectGraphQLFragments'
+import footerProps from '../gatsby/properties/footerProps'
+import headerProps from '../gatsby/properties/headerProps'
+import structuredDataProps from '../gatsby/properties/structuredDataProps'
 import { getHomePageProps } from '../templates/HomePage/contents'
 import { getRoomsPageProps } from '../templates/RoomsPage/contents'
 import { getHomePages, getRoomsPages } from './utils/pages'
@@ -26,6 +29,11 @@ export const createPages = async ({
         siteMetadata {
           title
           siteUrl
+        }
+      }
+      logo: allFile(filter: { name: { eq: "logo" } }) {
+        nodes {
+          publicURL
         }
       }
       cms {
@@ -57,6 +65,9 @@ export const createPages = async ({
         context: {
           ...page.context,
           ...props,
+          headerProps: headerProps(data),
+          footerProps: footerProps(data),
+          structuredDataProps: structuredDataProps(data),
         },
       })
       reporter.info(

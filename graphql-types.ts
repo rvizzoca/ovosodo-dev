@@ -6029,6 +6029,11 @@ export type GraphQlSourceSortInput = {
   order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
+export type HeaderDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type HeaderDataQuery = { allSitePage: { nodes: Array<{ pageContext?: any | null, path: string }> } };
+
 export type CreatePagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 

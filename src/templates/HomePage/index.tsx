@@ -3,7 +3,13 @@ import { CardsList } from 'app/components/CardsList'
 import { GalleryCategories } from 'app/components/GalleryCategories'
 import { ItemsList } from 'app/components/ItemsList'
 import { Slider } from 'app/components/Slider'
+import {
+  Props as StructuredDataProps,
+  StructuredData,
+} from 'app/components/StructuredData'
 import { VideoPlayer } from 'app/components/VideoPlayer'
+import { Footer, Props as FooterProps } from 'app/containers/Footer'
+import { Header, Props as HeaderProps } from 'app/containers/Header'
 import { PageProps } from 'gatsby'
 import React, { memo } from 'react'
 
@@ -13,6 +19,9 @@ export interface PageContext {
   id: string
   languageCode: string
   languagePrefix: string | null
+  headerProps?: HeaderProps
+  footerProps?: FooterProps
+  structuredDataProps?: StructuredDataProps
 }
 
 export interface Context extends PageContext {
@@ -26,6 +35,14 @@ export default memo(function HomePageTemplate({
 
   return (
     <Container>
+      {/* {context.headerProps ? (
+        <Header
+          languageCode={context.languageCode}
+          languagePrefix={context.languagePrefix}
+          pageID={context.id}
+          {...context.headerProps}
+        />
+      ) : null} */}
       {context.videoPlayerProps ? (
         <VideoPlayer {...context.videoPlayerProps} />
       ) : null}
@@ -39,6 +56,9 @@ export default memo(function HomePageTemplate({
       {context.galleryCategoriesProps ? (
         <GalleryCategories {...context.galleryCategoriesProps} />
       ) : null}
+      {/* {context.footerProps ? (
+        <Footer languageCode={context.languageCode} {...context.footerProps} />
+      ) : null} */}
     </Container>
   )
 })
